@@ -12,5 +12,5 @@ int main(int ac, char **av)
     if (ac == 1)
         return 84;
     explain_h(av);
-    return (0);
+    return 0;
 }
