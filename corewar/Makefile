@@ -5,7 +5,9 @@
 ## Makefile
 ##
 
-SRC	=
+SRC	= 	src/explain.c 	\
+		src/tools/my_strlen.c 	\
+		src/tools/my_strcmp.c
 
 MAIN =	src/main.c
 
