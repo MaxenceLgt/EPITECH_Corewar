@@ -5,9 +5,12 @@
 ** main
 */
 
+#include "corewar_header.h"
+
 int main(int ac, char **av)
 {
-    (void)ac;
-    (void)av;
-    return (0);
+    if (ac == 1)
+        return 84;
+    explain_h(av);
+    return 0;
 }
