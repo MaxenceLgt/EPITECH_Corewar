@@ -5,7 +5,7 @@
 ## Makefile
 ##
 
-SRC	= 	src/usage.c
+SRC	=
 
 MAIN =	src/main.c
 
