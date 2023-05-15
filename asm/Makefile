@@ -5,13 +5,12 @@
 ## Makefile
 ##
 
-SRC	= 	src/explain.c 	\
-		src/tools/my_strcmp.c 	\
-		src/tools/my_strlen.c
+SRC	=
 
 MAIN =	src/main.c
 
-INCLUDE =	include/
+INCLUDE =	include/	\
+			lib/ml_headers/
 
 NAME	=	asm
 
@@ -24,12 +23,15 @@ OBM =	$(MAIN:.c=.o)
 all:	$(NAME)
 
 $(NAME):	$(OBJ) $(OBM)
-	gcc -o $(NAME) $(OBJ) $(OBM)
+	make -C lib/
+	gcc -o $(NAME) $(OBJ) $(OBM) -Llib/ -lml_lib -lml_printf
 
 clean:
+	make clean -C lib/
 	rm -f $(OBJ) $(OBM)
 
 fclean:	clean
+	make fclean -C lib/
 	rm -f $(NAME)
 
 re: fclean all
