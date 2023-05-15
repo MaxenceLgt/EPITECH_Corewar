@@ -9,7 +9,7 @@
 
 int main(int ac, char **av)
 {
-    if (ac == 1)
+    if (ac < 2)
         return 84;
     explain_h(av);
     return 0;
