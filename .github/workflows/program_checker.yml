@@ -16,9 +16,7 @@ jobs:
     container: ghcr.io/epitech/coding-style-checker:latest
     steps:
       - uses: actions/checkout@v3
-      - name: Run coding style
       - run: check.sh $(pwd) $(pwd)
-      - name: Check coding style errors
       - run: |
           FILENAME=coding-style-reports.log
           if [ ! -s "${FILENAME}" ]; then
@@ -43,11 +41,9 @@ jobs:
     needs: check_coding_style
     steps:
       - uses: actions/checkout@v3
-      - name: Run Makefile
       - run: make
         timeout-minutes: 2
       - run: make clean
-      - name: Check executable names
       - run: |
           IFS=',' read -r -a array <<< "${{ env.EXECUTABLE }}"
           for element in "${array[@]}"
