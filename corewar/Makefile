@@ -5,14 +5,12 @@
 ## Makefile
 ##
 
-SRC	= 	src/explain.c 	\
-		src/tools/my_strlen.c 	\
-		src/tools/my_strcmp.c
+SRC	= 	src/explain.c
 
 MAIN =	src/main.c
 
-INCLUDE =	include/	\
-			lib/ml_headers/
+INCLUDE =		lib/ml_headers/	\
+				include/
 
 NAME	=	corewar
 
@@ -25,6 +23,7 @@ OBM =	$(MAIN:.c=.o)
 all:	$(NAME)
 
 $(NAME):	$(OBJ) $(OBM)
+	make -C lib/
 	gcc -o $(NAME) $(OBJ) $(OBM) -Llib/ -lml_lib -lml_printf
 
 clean:

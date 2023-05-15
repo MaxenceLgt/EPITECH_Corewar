@@ -1,0 +1,8 @@
+*.o
+*~
+*#
+corewar/corewar
+*/lib/*.a
+.vscode/
+vgcore*
+coding-style*
