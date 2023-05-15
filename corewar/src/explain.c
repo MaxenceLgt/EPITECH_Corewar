@@ -11,7 +11,7 @@
 
 void explain_h(char **av)
 {
-    if (my_strcmp(av[1], "-h") == 0) {
+    if (ml_strcmp(av[1], "-h") == 0) {
         write(1, "USAGE\n", 7);
         write(1, "./corewar [-dump nbr_cycle] [[-n prog_number] ", 46);
         write(1, "[-a load_address] prog_name] ...\n", 33);
