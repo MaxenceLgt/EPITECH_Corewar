@@ -5,7 +5,8 @@
 ## Makefile
 ##
 
-SRC	= 	src/explain.c
+SRC	= 	src/explain.c 	\
+		src/error_handling.c
 
 MAIN =	src/main.c
 

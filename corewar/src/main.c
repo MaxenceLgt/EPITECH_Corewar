@@ -9,8 +9,10 @@
 
 int main(int ac, char **av)
 {
-    if (ac < 2)
-        return 84;
     explain_h(av);
+    if (ac < 3 || ac % 2 == 0)
+        return 84;
+    if (error_handling(av) == 84)
+        return 84;
     return 0;
 }

@@ -11,5 +11,6 @@
     #include "ml_lib_head.h"
 
     void explain_h(char **av);
+    int error_handling(char **av);
 
 #endif /* !COREWAR_HEADER_ */
