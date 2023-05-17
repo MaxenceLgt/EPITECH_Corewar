@@ -9,7 +9,11 @@
 
 int compile_asm_code(char *file)
 {
+    UNUSED compiler_t *info = NULL;
+
     if (manage_errors(file) == 84)
         return (84);
+    info = init_compiler(file);
+    destroy_comp_struct(info);
     return (0);
 }

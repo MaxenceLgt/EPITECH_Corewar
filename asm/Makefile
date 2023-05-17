@@ -8,6 +8,11 @@
 SRC	=	src/op.c										\
 		src/compiler/compile_asm_code.c					\
 		\
+		src/compiler/struct_comp/convert_file_content.c	\
+		src/compiler/struct_comp/init_compiler_struct.c	\
+		src/compiler/struct_comp/destroy_comp_struct.c	\
+		src/compiler/struct_comp/get_labels.c			\
+		\
 		src/compiler/error_handling/manage_errors.c		\
 		src/compiler/error_handling/file_is_readable.c	\
 		src/compiler/error_handling/header_presence.c
