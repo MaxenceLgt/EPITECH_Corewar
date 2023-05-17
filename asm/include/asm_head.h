@@ -17,6 +17,7 @@
 
     /// ERROR HANDLING ///
 
-    int manage_errors(char *file);
+    int manage_errors(const char *file);
+    bool file_is_readable(const char *file);
 
 #endif /* !ASM_HEAD_ */

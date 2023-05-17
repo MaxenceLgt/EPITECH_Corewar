@@ -24,6 +24,5 @@ int main(int ac, char **av)
     if (ac == 2 && ml_strcmp(av[1], "-h") == 0)
         display_usage();
     else
-        compile_asm_code(av[1]);
-    return 0;
+        return (compile_asm_code(av[1]));
 }
