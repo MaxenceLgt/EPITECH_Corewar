@@ -41,9 +41,6 @@ compiler_t *init_compiler(const char *file)
         destroy_comp_struct(info);
         exit(84);
     }
-    ml_printf("%s\n", info->f_out);
-    ml_display_str_array(info->f_lines);
-    ml_display_str_array(info->labels);
     free(buffer);
     return (info);
 }
