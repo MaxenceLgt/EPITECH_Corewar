@@ -5,7 +5,10 @@
 ## Makefile
 ##
 
-SRC	=
+SRC	=	src/op.c									\
+		src/compiler/compile_asm_code.c				\
+		\
+		src/compiler/error_handling/manage_errors.c
 
 MAIN =	src/main.c
 
