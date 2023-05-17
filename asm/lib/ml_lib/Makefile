@@ -45,7 +45,8 @@ SRC	=	src/char_managing/ml_char_is.c				\
 		src/list_managing/ml_destroy_node.c			\
 		src/list_managing/ml_destroy_list.c			\
 		\
-		src/file_managing/ml_get_file_size.c
+		src/file_managing/ml_get_file_size.c		\
+		src/file_managing/ml_get_file_content.c		\
 
 INCLUDE = include/
 

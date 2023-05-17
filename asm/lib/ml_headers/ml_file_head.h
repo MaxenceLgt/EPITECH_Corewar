@@ -18,4 +18,13 @@
      */
     ssize_t ml_get_file_size(char const *file);
 
+    /**
+     * @brief ml_get_file_content function get the content of the file passed
+     * as parameter.
+     *
+     * @param file File to get the content of.
+     * @return Content of the file inside a buffer. (char *)
+     */
+    char *ml_get_file_content(char const *file);
+
 #endif /* !ML_FILE_HEAD_ */

@@ -12,6 +12,7 @@
 
     #include "ml_lib_head.h"
     #include "op.h"
+    #include "define_head.h"
 
     int compile_asm_code(char *file);
 
@@ -19,5 +20,6 @@
 
     int manage_errors(const char *file);
     bool file_is_readable(const char *file);
+    bool presence_of_header(char *buff);
 
 #endif /* !ASM_HEAD_ */
