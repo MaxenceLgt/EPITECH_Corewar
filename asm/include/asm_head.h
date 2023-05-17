@@ -14,7 +14,19 @@
     #include "op.h"
     #include "define_head.h"
 
+    typedef struct compiler_s {
+        char *f_out;
+        char **f_lines;
+        char **labels;
+    } compiler_t;
+
     int compile_asm_code(char *file);
+
+    /// COMPILER STRUCT ///
+
+    compiler_t *init_compiler(const char *file);
+    char **convert_file_content(char *buffer);
+    void destroy_comp_struct(compiler_t *info);
 
     /// ERROR HANDLING ///
 

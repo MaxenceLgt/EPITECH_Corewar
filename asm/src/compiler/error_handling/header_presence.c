@@ -9,8 +9,10 @@
 #include <sys/types.h>
 #include <stdbool.h>
 
-static void skip_quote(char *buff, size_t *parser, char opt)
+static int skip_quote(char *buff, size_t *parser, char opt)
 {
+    size_t size_arg = 0;
+
     if (opt == 'n')
         (*parser) += 6;
     else if (opt == 'c')
@@ -18,10 +20,14 @@ static void skip_quote(char *buff, size_t *parser, char opt)
     for (; CHAR_IS(buff[(*parser)], "\t ") && buff[(*parser)] != '\0';
     (*parser)++);
     if (buff[(*parser)] != '"')
-        return;
+        return (84);
     (*parser)++;
     for (; buff[(*parser)] != '"' && buff[(*parser)] != '\n' &&
-    buff[(*parser)] != '\0'; (*parser)++);
+    buff[(*parser)] != '\0'; (*parser)++, size_arg++);
+    if ((opt == 'n' && size_arg > PROG_NAME_LENGTH) ||
+    (opt == 'c' && size_arg > COMMENT_LENGTH))
+        return (84);
+    return (0);
 }
 
 bool presence_of_header(char *buff)
@@ -33,15 +39,13 @@ bool presence_of_header(char *buff)
     for (; CHAR_IS(buff[parser], "\n\t ") && buff[parser] != '\0'; parser++);
     if (buff[parser] == '\0' || ml_strncmp(&buff[parser], ".name", 5) != 0)
         return (false);
-    skip_quote(buff, &parser, 'n');
-    if (buff[parser] != '"')
+    if (skip_quote(buff, &parser, 'n') == 84 || buff[parser] != '"')
         return (false);
     parser++;
     for (; CHAR_IS(buff[parser], "\n\t ") && buff[parser] != '\0'; parser++);
     if (buff[parser] == '\0' || ml_strncmp(&buff[parser], ".comment", 8) != 0)
         return (false);
-    skip_quote(buff, &parser, 'c');
-    if (buff[parser] != '"')
+    if (skip_quote(buff, &parser, 'c') == 84 || buff[parser] != '"')
         return (false);
     return (true);
 }
