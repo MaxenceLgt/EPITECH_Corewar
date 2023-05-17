@@ -35,7 +35,15 @@ compiler_t *init_compiler(const char *file)
         return (NULL);
     info->f_out = get_output_file(file);
     info->f_lines = convert_file_content(buffer);
-    info->labels = NULL;
+    info->labels = get_labels(info->f_lines);
+    if (info->labels && ml_strcmp(info->labels[0], "Invalid label") == 0) {
+        free(buffer);
+        destroy_comp_struct(info);
+        exit(84);
+    }
+    ml_printf("%s\n", info->f_out);
+    ml_display_str_array(info->f_lines);
+    ml_display_str_array(info->labels);
     free(buffer);
     return (info);
 }

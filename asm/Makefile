@@ -11,6 +11,7 @@ SRC	=	src/op.c										\
 		src/compiler/struct_comp/convert_file_content.c	\
 		src/compiler/struct_comp/init_compiler_struct.c	\
 		src/compiler/struct_comp/destroy_comp_struct.c	\
+		src/compiler/struct_comp/get_labels.c			\
 		\
 		src/compiler/error_handling/manage_errors.c		\
 		src/compiler/error_handling/file_is_readable.c	\
@@ -23,7 +24,7 @@ INCLUDE =	include/	\
 
 NAME	=	asm
 
-CFLAGS = $(INCLUDE:%=-I%) -Wall -Wextra
+CFLAGS = $(INCLUDE:%=-I%) -Wall -Wextra -g
 
 OBJ	=	$(SRC:.c=.o)
 

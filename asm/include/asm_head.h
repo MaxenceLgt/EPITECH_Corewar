@@ -27,6 +27,7 @@
     compiler_t *init_compiler(const char *file);
     char **convert_file_content(char *buffer);
     void destroy_comp_struct(compiler_t *info);
+    char **get_labels(char **lines);
 
     /// ERROR HANDLING ///
 
