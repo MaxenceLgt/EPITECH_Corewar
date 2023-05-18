@@ -18,6 +18,8 @@
         char *f_out;
         char **f_lines;
         char **labels;
+        int fd_out;
+        int file_size;
     } compiler_t;
 
     int compile_asm_code(const char *file);
@@ -41,5 +43,9 @@
     bool verify_cmd_and_args(char **cmd, char **labels);
     bool is_existant_label(char *cmd, char **labels);
     bool cmd_call_label(char *cmd);
+
+    /// TRANSCRIBE ///
+
+    void transcribe_header(compiler_t *info);
 
 #endif /* !ASM_HEAD_ */

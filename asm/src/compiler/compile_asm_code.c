@@ -5,7 +5,15 @@
 ** compile_asm_file
 */
 
+#include <fcntl.h>
 #include "asm_head.h"
+
+static int open_file(compiler_t *info)
+{
+    int fd = open(info->f_out, O_RDWR | O_CREAT, 0644);
+
+    return (fd);
+}
 
 int compile_asm_code(const char *file)
 {
@@ -17,6 +25,11 @@ int compile_asm_code(const char *file)
     if (check_cmd_validity(info) == 84) {
         destroy_comp_struct(info);
         return (84);
+    }
+    info->fd_out = open_file(info);
+    info->file_size = ml_get_file_size(file);
+    if (info->fd_out != -1) {
+        transcribe_header(info);
     }
     destroy_comp_struct(info);
     return (0);

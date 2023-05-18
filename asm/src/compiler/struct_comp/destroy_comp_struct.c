@@ -12,6 +12,8 @@ void destroy_comp_struct(compiler_t *info)
 {
     if (!info)
         return;
+    if (info->fd_out != -1)
+        close(info->fd_out);
     if (info->f_lines)
         ml_destroy_str_array(info->f_lines);
     if (info->f_out)
