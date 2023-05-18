@@ -12,5 +12,6 @@
     #define CHAR_IS_ALNUM(c) ((c >= '0' && c <= '9') || (c >= 'a' && c <= 'z') \
 || (c >= 'A' && c <= 'Z'))
     #define PASS ml_printf("Je passe par ici\n")
+    #define CONST (const char **)
 
 #endif /* !DEFINE_HEAD_ */

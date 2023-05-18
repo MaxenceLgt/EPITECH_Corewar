@@ -16,7 +16,7 @@ static void set_invalid_label(char ***label)
     (*label) = ml_add_str_to_array((*label), "Invalid label");
 }
 
-static bool line_is_label(char *line)
+bool line_is_label(char *line)
 {
     char **line_array = ml_str_tok(line, "\t ");
     size_t last_pos = 0;

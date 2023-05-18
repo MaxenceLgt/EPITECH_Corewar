@@ -35,5 +35,9 @@
     bool file_is_readable(const char *file);
     bool presence_of_header(char *buff);
     int check_cmd_validity(compiler_t *info);
+    bool comment_is_present(char *line);
+    char *delete_comment(char *line);
+    bool line_is_label(char *line);
+    bool verify_cmd_and_args(char **cmd, char **labels);
 
 #endif /* !ASM_HEAD_ */
