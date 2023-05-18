@@ -20,7 +20,7 @@
         char **labels;
     } compiler_t;
 
-    int compile_asm_code(char *file);
+    int compile_asm_code(const char *file);
 
     /// COMPILER STRUCT ///
 
@@ -34,5 +34,6 @@
     int manage_errors(const char *file);
     bool file_is_readable(const char *file);
     bool presence_of_header(char *buff);
+    int check_cmd_validity(compiler_t *info);
 
 #endif /* !ASM_HEAD_ */

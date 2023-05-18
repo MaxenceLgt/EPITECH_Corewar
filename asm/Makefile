@@ -15,7 +15,8 @@ SRC	=	src/op.c										\
 		\
 		src/compiler/error_handling/manage_errors.c		\
 		src/compiler/error_handling/file_is_readable.c	\
-		src/compiler/error_handling/header_presence.c
+		src/compiler/error_handling/header_presence.c	\
+		src/compiler/error_handling/check_cmd_err.c
 
 MAIN =	src/main.c
 
