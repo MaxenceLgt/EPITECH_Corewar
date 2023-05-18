@@ -8,6 +8,14 @@
 #include "asm_head.h"
 #include "define_head.h"
 
+static bool str_is_num(char *str)
+{
+    for (size_t i = 0; str[i] != '\0'; i++)
+        if (!CHAR_IS_NUM(str[i]))
+            return (false);
+    return (true);
+}
+
 static bool is_existing_cmd(char *cmd)
 {
     for (size_t i = 0; op_tab[i].mnemonique != 0; i++)
@@ -16,9 +24,28 @@ static bool is_existing_cmd(char *cmd)
     return (false);
 }
 
-static bool is_valid_arg(UNUSED char *cmd, UNUSED char **labels,
-UNUSED op_t info, UNUSED size_t pos)
+int get_type(char *cmd)
 {
+    if (cmd[0] == DIRECT_CHAR)
+        return (T_DIR);
+    else if (cmd[0] == 'r')
+        return (T_REG);
+    return (T_IND);
+}
+
+static bool is_valid_arg(char *cmd, char **labels, op_t info, size_t pos)
+{
+    int type = 0;
+    if (!cmd)
+        return (false);
+    type = get_type(cmd);
+    if (!(type & info.type[pos]))
+        return (false);
+    if (type == T_REG && (!str_is_num(&cmd[1]) || ml_atoi(&cmd[1]) >
+    REG_NUMBER))
+        return (false);
+    if (cmd_call_label(cmd) && !is_existant_label(cmd, labels))
+        return (false);
     return (true);
 }
 
@@ -33,7 +60,7 @@ bool verify_cmd_and_args(char **cmd, char **labels)
     op_tab[tab_parser].nbr_args)
         return (false);
     for (size_t i = 1; cmd[i]; i++)
-        if (!is_valid_arg(cmd[i], labels, op_tab[tab_parser], i))
+        if (!is_valid_arg(cmd[i], labels, op_tab[tab_parser], i - 1))
             return (false);
     return (true);
 }

@@ -39,5 +39,7 @@
     char *delete_comment(char *line);
     bool line_is_label(char *line);
     bool verify_cmd_and_args(char **cmd, char **labels);
+    bool is_existant_label(char *cmd, char **labels);
+    bool cmd_call_label(char *cmd);
 
 #endif /* !ASM_HEAD_ */

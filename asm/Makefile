@@ -18,7 +18,8 @@ SRC	=	src/op.c										\
 		src/compiler/error_handling/header_presence.c	\
 		src/compiler/error_handling/check_cmd_err.c		\
 		src/compiler/error_handling/check_cmd_content.c	\
-		src/compiler/error_handling/comment_manage.c
+		src/compiler/error_handling/comment_manage.c	\
+		src/compiler/error_handling/label_management.c
 
 MAIN =	src/main.c
 
