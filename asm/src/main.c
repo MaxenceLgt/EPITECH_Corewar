@@ -19,9 +19,10 @@ static void display_usage(void)
 
 int main(int ac, char **av)
 {
-    if (ac == 1)
+    if (ac != 2)
         return 84;
     if (ac == 2 && ml_strcmp(av[1], "-h") == 0)
         display_usage();
-    return 0;
+    else
+        return (compile_asm_code(av[1]));
 }
