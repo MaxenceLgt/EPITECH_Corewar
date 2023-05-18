@@ -12,8 +12,8 @@ static bool cmd_is_valid(char *line, char **labels)
 {
     char *cmd = NULL;
     char **arr_cmd = NULL;
-    bool is_label = false;
     size_t parser = 0;
+    bool res = true;
 
     if (comment_is_present(line))
         cmd = delete_comment(line);
@@ -21,12 +21,15 @@ static bool cmd_is_valid(char *line, char **labels)
         cmd = ml_strdup(line);
     arr_cmd = ml_str_tok(cmd, " \t,");
     free(cmd);
-    is_label = line_is_label(arr_cmd[parser]);
-    if (is_label && !arr_cmd[parser + 1])
+    res = line_is_label(arr_cmd[parser]);
+    if (res && !arr_cmd[parser + 1]) {
+        ml_destroy_str_array(arr_cmd);
         return (true);
-    else if (is_label && arr_cmd[parser + 1])
+    } else if (res && arr_cmd[parser + 1])
         parser++;
-    return (verify_cmd_and_args(&arr_cmd[parser], labels));
+    res = verify_cmd_and_args(&arr_cmd[parser], labels);
+    ml_destroy_str_array(arr_cmd);
+    return (res);
 }
 
 int check_cmd_validity(compiler_t *info)

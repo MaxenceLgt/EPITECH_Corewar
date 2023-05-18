@@ -27,6 +27,7 @@ static void delete_str_from_tab(char ***tab, size_t pos)
         free((*tab)[pos]);
         (*tab)[pos] = ml_strdup((*tab)[pos + 1]);
     }
+    free((*tab)[pos]);
     (*tab)[pos] = NULL;
 }
 
