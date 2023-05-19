@@ -27,7 +27,6 @@ int compile_asm_code(const char *file)
         return (84);
     }
     info->fd_out = open_file(info);
-    info->file_size = ml_get_file_size(file);
     if (info->fd_out != -1) {
         transcribe_header(info);
     }

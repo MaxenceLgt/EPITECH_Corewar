@@ -21,7 +21,8 @@ SRC	=	src/op.c										\
 		src/compiler/error_handling/comment_manage.c	\
 		src/compiler/error_handling/label_management.c	\
 		\
-		src/compiler/transcribe/transcribe_header.c
+		src/compiler/transcribe/transcribe_header.c		\
+		src/compiler/transcribe/calculate_prog_size.c	\
 
 MAIN =	src/main.c
 

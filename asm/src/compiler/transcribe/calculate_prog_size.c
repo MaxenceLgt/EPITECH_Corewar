@@ -7,7 +7,7 @@
 
 #include "asm_head.h"
 
-static int calculate_size_cmd(char *cmd)
+static int calculate_size_cmd(UNUSED char *cmd)
 {
     return (0);
 }
