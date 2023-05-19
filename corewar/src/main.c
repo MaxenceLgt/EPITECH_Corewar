@@ -11,6 +11,6 @@ int main(int ac, char **av)
 {
     if (ac == 1)
         return 84;
-    explain_h(av);
+    manage_help(ac, av);
     return 0;
 }
