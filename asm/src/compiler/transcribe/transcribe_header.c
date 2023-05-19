@@ -52,5 +52,6 @@ void transcribe_header(compiler_t *info)
     for (size_t i = 0; comment && comment[i] != '\0'; i++)
         header.comment[i] = comment[i];
     header.prog_size = calculate_prog_size(&info->f_lines[2]);
+    change_endians(&header.prog_size, sizeof(u_int32_t));
     write(info->fd_out, &header, sizeof(header_t));
 }

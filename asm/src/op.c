@@ -6,6 +6,7 @@
 */
 
 #include "op.h"
+#include "indexes.h"
 
 op_t op_tab[] = {
     {"live", 1, {T_DIR}, 1, 10, "alive"},
@@ -31,3 +32,11 @@ op_t op_tab[] = {
     {"lfork", 1, {T_DIR}, 15, 1000, "long fork"},
     {"aff", 1, {T_REG}, 16, 2, "aff"},
     {0, 0, {0}, 0, 0, 0}};
+
+index_t index_tab[] = {
+    {"zjmp", {0, -1}, 1},
+    {"ldi", {0, 1, -1}, 3},
+    {"sti", {1, 2, -1}, 3},
+    {"fork", {0, -1}, 1},
+    {"lfork", {0, -1}, 1},
+    {0, {-1}, 0}};
