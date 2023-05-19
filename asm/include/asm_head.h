@@ -8,8 +8,6 @@
 #ifndef ASM_HEAD_
     #define ASM_HEAD_
 
-    #define UNUSED __attribute__((__unused__))
-
     #include "ml_lib_head.h"
     #include "op.h"
     #include "define_head.h"
@@ -19,10 +17,10 @@
         char **f_lines;
         char **labels;
         int fd_out;
-        int file_size;
     } compiler_t;
 
     int compile_asm_code(const char *file);
+    void change_endians(void *data, size_t size);
 
     /// COMPILER STRUCT ///
 
@@ -46,6 +44,7 @@
 
     /// TRANSCRIBE ///
 
+    int calculate_prog_size(char **prog);
     void transcribe_header(compiler_t *info);
 
 #endif /* !ASM_HEAD_ */
