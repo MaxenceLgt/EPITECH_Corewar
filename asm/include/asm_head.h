@@ -10,6 +10,7 @@
 
     #include "ml_lib_head.h"
     #include "op.h"
+    #include "indexes.h"
     #include "define_head.h"
 
     typedef struct compiler_s {
@@ -44,7 +45,12 @@
 
     /// TRANSCRIBE ///
 
+    void remove_comment_to_tab(char ***tab);
     int calculate_prog_size(char **prog);
     void transcribe_header(compiler_t *info);
+    bool is_in_index_lst(char *cmd);
+    int manage_index_arg(char **args);
+    bool codingbyte_is_present(char *cmd);
+    int calculate_prog_size(char **prog);
 
 #endif /* !ASM_HEAD_ */

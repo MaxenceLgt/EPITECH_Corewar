@@ -27,6 +27,7 @@ int compile_asm_code(const char *file)
         return (84);
     }
     info->fd_out = open_file(info);
+    remove_comment_to_tab(&info->f_lines);
     if (info->fd_out != -1) {
         transcribe_header(info);
     }
