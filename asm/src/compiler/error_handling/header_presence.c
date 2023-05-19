@@ -30,6 +30,11 @@ static int skip_quote(char *buff, size_t *parser, char opt)
     return (0);
 }
 
+static void skip_comment(char *buff, size_t *parser)
+{
+    for (; buff[(*parser)] != '\n' && buff[(*parser)] != '\0'; (*parser)++);
+}
+
 bool presence_of_header(char *buff)
 {
     size_t parser = 0;
@@ -41,8 +46,12 @@ bool presence_of_header(char *buff)
         return (false);
     if (skip_quote(buff, &parser, 'n') == 84 || buff[parser] != '"')
         return (false);
-    parser++;
-    for (; CHAR_IS(buff[parser], "\n\t ") && buff[parser] != '\0'; parser++);
+    for (parser++; buff[parser] != '.' && buff[parser] != '\0'; parser++) {
+        if (buff[parser] == COMMENT_CHAR)
+            skip_comment(buff, &parser);
+        if (!CHAR_IS(buff[parser], "\n\t "))
+            break;
+    }
     if (buff[parser] == '\0' || ml_strncmp(&buff[parser], ".comment", 8) != 0)
         return (false);
     if (skip_quote(buff, &parser, 'c') == 84 || buff[parser] != '"')
