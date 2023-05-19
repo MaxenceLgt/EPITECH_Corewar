@@ -15,7 +15,16 @@ SRC	=	src/op.c										\
 		\
 		src/compiler/error_handling/manage_errors.c		\
 		src/compiler/error_handling/file_is_readable.c	\
-		src/compiler/error_handling/header_presence.c
+		src/compiler/error_handling/header_presence.c	\
+		src/compiler/error_handling/check_cmd_err.c		\
+		src/compiler/error_handling/check_cmd_content.c	\
+		src/compiler/error_handling/comment_manage.c	\
+		src/compiler/error_handling/label_management.c	\
+		\
+		src/compiler/transcribe/transcribe_header.c		\
+		src/compiler/transcribe/calculate_prog_size.c	\
+		src/compiler/transcribe/remove_comment_to_tab.c	\
+		src/compiler/transcribe/index_management.c
 
 MAIN =	src/main.c
 

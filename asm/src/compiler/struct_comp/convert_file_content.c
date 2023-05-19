@@ -11,9 +11,13 @@
 
 static bool is_empty_string(const char *str)
 {
-    for (size_t i = 0; str[i] != '\0'; i++)
+
+    for (size_t i = 0; str[i] != '\0'; i++) {
+        if (str[i] == COMMENT_CHAR)
+            break;
         if (!CHAR_IS(str[i], " \t"))
             return (false);
+    }
     return (true);
 }
 
@@ -23,6 +27,7 @@ static void delete_str_from_tab(char ***tab, size_t pos)
         free((*tab)[pos]);
         (*tab)[pos] = ml_strdup((*tab)[pos + 1]);
     }
+    free((*tab)[pos]);
     (*tab)[pos] = NULL;
 }
 
