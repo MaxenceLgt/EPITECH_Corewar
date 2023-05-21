@@ -5,7 +5,9 @@
 ## Makefile
 ##
 
-SRC	= 	src/explain.c
+SRC	= 	src/doc/help.c			\
+		\
+		src/tools/op.c
 
 MAIN =	src/main.c
 
