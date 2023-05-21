@@ -51,4 +51,6 @@
 
     char *ml_itoa(int nb);
 
+    u_int16_t ml_atoi_b(char *str);
+
 #endif /* !ml_INT_HEAD_ */

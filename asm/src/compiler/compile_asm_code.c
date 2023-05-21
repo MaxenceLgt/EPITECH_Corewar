@@ -30,6 +30,7 @@ int compile_asm_code(const char *file)
     remove_comment_to_tab(&info->f_lines);
     if (info->fd_out != -1) {
         transcribe_header(info);
+        transcribe_body(&info->f_lines[2], info);
     }
     destroy_comp_struct(info);
     return (0);

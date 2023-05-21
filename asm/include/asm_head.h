@@ -52,5 +52,9 @@
     int manage_index_arg(char **args);
     bool codingbyte_is_present(char *cmd);
     int calculate_prog_size(char **prog);
+    void transcribe_body(char **body, compiler_t *info);
+    void transcribe_register(char *nb_str, int fd_out);
+    void transcribe_direct_or_ind(char *str, int fd_out);
+    void transcribe_index(char *str, int fd_out);
 
 #endif /* !ASM_HEAD_ */
