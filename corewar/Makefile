@@ -7,7 +7,13 @@
 
 SRC	= 	src/doc/help.c			\
 		\
-		src/tools/op.c
+		src/tools/op.c			\
+		\
+		src/init/init_vm.c		\
+		src/init/parse_args.c	\
+		\
+		src/init/data_handling/handle_champ.c	\
+		src/init/data_handling/handle_cycles.c
 
 MAIN =	src/main.c
 

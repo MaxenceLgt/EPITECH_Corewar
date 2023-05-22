@@ -9,8 +9,12 @@
 
 int main(int ac, char **av)
 {
-    if (ac == 1)
+    vm_t *vm;
+
+    if (manage_help(ac, av))
+        return 0;
+    vm = init_vm(ac, av);
+    if (vm == NULL)
         return 84;
-    manage_help(ac, av);
     return 0;
 }
