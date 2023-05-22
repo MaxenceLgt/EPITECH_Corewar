@@ -35,7 +35,7 @@
 
     // INIT
 
-    vm_t *init_vm(char **av);
-    int parse_args(vm_t *vm, char **av);
+    vm_t *init_vm(int ac, char **av);
+    int parse_args(vm_t *vm, int ac, char **av);
 
 #endif /* !COREWAR_HEADER_ */

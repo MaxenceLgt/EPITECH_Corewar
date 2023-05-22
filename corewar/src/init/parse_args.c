@@ -5,9 +5,21 @@
 ** parse_args
 */
 
+#include <unistd.h>
 #include "corewar_header.h"
 
-int parse_args(vm_t *vm, char **av)
+static int handle_parameter(vm_t *vm, char **av, int *i)
 {
+    return 0;
+}
+
+int parse_args(vm_t *vm, int ac, char **av)
+{
+    for (size_t i = 1; i < ac;) {
+        if (handle_parameter(vm, av, &i)) {
+            write(2, "Invalid parameter.\n", 19);
+            return 84;
+        }
+    }
     return 0;
 }
