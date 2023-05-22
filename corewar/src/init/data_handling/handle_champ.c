@@ -7,7 +7,7 @@
 
 #include "corewar_header.h"
 
-int handle_champ(vm_t *vm, char **av, size_t *i)
+int handle_champ(UNUSED vm_t *vm, UNUSED char **av, UNUSED size_t *i)
 {
     return 0;
 }
