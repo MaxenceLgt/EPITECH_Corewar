@@ -8,9 +8,11 @@
 #include <unistd.h>
 #include "corewar_header.h"
 
-static int handle_parameter(vm_t *vm, char **av, int *i)
+static int handle_parameter(vm_t *vm, char **av, size_t *i)
 {
-    return 0;
+    if (!ml_strcmp("-dump", av[*i]))
+        return handle_cycles(vm, av, i);
+    return handle_champ(vm, av, i);
 }
 
 int parse_args(vm_t *vm, int ac, char **av)

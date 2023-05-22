@@ -31,11 +31,13 @@
 
     // DOC
 
-    void manage_help(int ac, char **av);
+    int manage_help(int ac, char **av);
 
     // INIT
 
     vm_t *init_vm(int ac, char **av);
     int parse_args(vm_t *vm, int ac, char **av);
+    int handle_cycles(vm_t *vm, char **av, size_t *i);
+    int handle_champ(vm_t *vm, char **av, size_t *i);
 
 #endif /* !COREWAR_HEADER_ */

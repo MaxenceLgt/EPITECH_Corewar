@@ -21,7 +21,8 @@ vm_t *init_vm(int ac, char **av)
     vm->nbr_live = NBR_LIVE;
     vm->cycle_to_die = CYCLE_TO_DIE;
     vm->cycle_delta = CYCLE_DELTA;
+    vm->champs_data = NULL;
     if (parse_args(vm, ac, av) == 84)
         return NULL;
-    return 0;
+    return vm;
 }
