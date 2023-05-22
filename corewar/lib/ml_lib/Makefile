@@ -22,6 +22,7 @@ SRC	=	src/char_managing/ml_char_is.c				\
 		src/str_managing/ml_put_nbr.c				\
 		src/str_managing/ml_strncat.c				\
 		src/str_managing/ml_char_is_in_lst.c		\
+		src/str_managing/ml_str_is_num.c 			\
 		\
 		src/array_managing/ml_str_tok.c				\
 		src/array_managing/ml_add_str_to_array.c	\
