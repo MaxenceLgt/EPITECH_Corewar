@@ -47,10 +47,16 @@
 
     void remove_comment_to_tab(char ***tab);
     int calculate_prog_size(char **prog);
+    int calculate_size_cmd(char *cmd);
     void transcribe_header(compiler_t *info);
     bool is_in_index_lst(char *cmd);
     int manage_index_arg(char **args);
     bool codingbyte_is_present(char *cmd);
     int calculate_prog_size(char **prog);
+    void transcribe_body(char **body, compiler_t *info);
+    void transcribe_register(char *nb_str, int fd_out);
+    void transcribe_direct_or_ind(char *str, int fd_out);
+    void transcribe_index(char *str, compiler_t *info, size_t i);
+    void transcribe_label(compiler_t *info, size_t i, char *name);
 
 #endif /* !ASM_HEAD_ */
