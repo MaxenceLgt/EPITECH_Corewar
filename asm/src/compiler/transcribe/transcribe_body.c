@@ -52,7 +52,7 @@ static void transcribe_cmd(char **temp, compiler_t *info, size_t pos)
             transcribe_index(temp[i], info, pos);
             continue;
         }
-        transcribe_direct_or_ind(temp[i], info->fd_out);
+        transcribe_direct_or_ind(temp[i], info, pos);
     }
 }
 
