@@ -37,6 +37,7 @@ SRC	=	src/char_managing/ml_char_is.c				\
 		src/int_managing/ml_atoi.c					\
 		src/int_managing/ml_atof.c					\
 		src/int_managing/ml_itoa.c					\
+		src/int_managing/ml_atoi_b.c				\
 		\
 		src/list_managing/ml_create_list.c			\
 		src/list_managing/ml_add_node_back.c		\

@@ -35,15 +35,8 @@ static void skip_comment(char *buff, size_t *parser)
     for (; buff[(*parser)] != '\n' && buff[(*parser)] != '\0'; (*parser)++);
 }
 
-bool presence_of_header(char *buff)
+static bool presence_of_comment(size_t parser, char *buff)
 {
-    size_t parser = 0;
-
-    if (!buff)
-        return (false);
-    for (; CHAR_IS(buff[parser], "\n\t ") && buff[parser] != '\0'; parser++);
-    if (buff[parser] == '\0' || ml_strncmp(&buff[parser], ".name", 5) != 0)
-        return (false);
     if (skip_quote(buff, &parser, 'n') == 84 || buff[parser] != '"')
         return (false);
     for (parser++; buff[parser] != '.' && buff[parser] != '\0'; parser++) {
@@ -55,6 +48,22 @@ bool presence_of_header(char *buff)
     if (buff[parser] == '\0' || ml_strncmp(&buff[parser], ".comment", 8) != 0)
         return (false);
     if (skip_quote(buff, &parser, 'c') == 84 || buff[parser] != '"')
+        return (false);
+    return (true);
+}
+
+bool presence_of_header(char *buff)
+{
+    size_t parser = 0;
+
+    if (!buff)
+        return (false);
+    for (; CHAR_IS(buff[parser], "\n\t #") && buff[parser] != '\0'; parser++)
+        if (buff[parser] == '#')
+            skip_comment(buff, &parser);
+    if (buff[parser] == '\0' || ml_strncmp(&buff[parser], ".name", 5) != 0)
+        return (false);
+    if (!presence_of_comment(parser, buff))
         return (false);
     return (true);
 }
