@@ -10,13 +10,23 @@
 
     // INCLUDES
 
+    #include <sys/types.h>
     #include "ml_lib_head.h"
 
     // STRUCT
 
-typedef struct virtual_machine {
-    char *tmp;
-} vm_t;
+    typedef struct champs {
+        int load_address;
+        int prog_number;
+        unsigned char *champ_content;
+    } champ_t;
+
+    typedef struct virtual_machine {
+        unsigned char *vm;
+        size_t cycle_to_die;
+        size_t cycle_delta;
+        ml_list *champs_data;
+    } vm_t;
 
     // DOC
 
