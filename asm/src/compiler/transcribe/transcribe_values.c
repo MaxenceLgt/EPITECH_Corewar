@@ -31,23 +31,16 @@ void transcribe_direct_or_ind(char *str, int fd_out)
     }
 }
 
-void transcribe_label(char *str, int fd_out)
+void transcribe_index(char *str, compiler_t *info, size_t pos)
 {
     u_int16_t ind = 0;
 
-    if (str[0] == ':')
-        ind = (u_int16_t)&str[1];
-    if (str[1] == ':')
-        ind = (u_int16_t)&str[2];
-    write(fd_out, &ind, sizeof(u_int16_t));
-}
-
-void transcribe_index(char *str, int fd_out)
-{
-    u_int16_t ind = 0;
-
-    if (str[0] == ':' || str[1] == ':') {
-        transcribe_label(str, fd_out);
+    if (str[0] == ':') {
+        transcribe_label(info, pos, &str[1]);
+        return;
+    }
+    if (str[1] == ':') {
+        transcribe_label(info, pos, &str[2]);
         return;
     }
     if (str[0] == DIRECT_CHAR)
@@ -55,5 +48,5 @@ void transcribe_index(char *str, int fd_out)
     else
         ind = ml_atoi_b(str);
     change_endians(&ind, sizeof(u_int16_t));
-    write(fd_out, &ind, sizeof(u_int16_t));
+    write(info->fd_out, &ind, sizeof(u_int16_t));
 }

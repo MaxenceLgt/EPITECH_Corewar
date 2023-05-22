@@ -35,7 +35,7 @@ static int count_size_cmd(char **cmd)
     return (result);
 }
 
-static int calculate_size_cmd(char *cmd)
+int calculate_size_cmd(char *cmd)
 {
     int size_line = 0;
     size_t parser = 0;

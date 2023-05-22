@@ -36,7 +36,7 @@ static void transcribe_codingbyte(char **args, compiler_t *info)
     write(info->fd_out, &res, 1);
 }
 
-static void transcribe_cmd(char **temp, compiler_t *info)
+static void transcribe_cmd(char **temp, compiler_t *info, size_t pos)
 {
     char cmd = get_cmd_code(temp[0]);
 
@@ -49,7 +49,7 @@ static void transcribe_cmd(char **temp, compiler_t *info)
             continue;
         }
         if (is_in_index_lst(temp[0])) {
-            transcribe_index(temp[i], info->fd_out);
+            transcribe_index(temp[i], info, pos);
             continue;
         }
         transcribe_direct_or_ind(temp[i], info->fd_out);
@@ -69,9 +69,9 @@ void transcribe_body(char **body, compiler_t *info)
             continue;
         }
         if (line_is_label(temp[0]))
-            transcribe_cmd(&temp[1], info);
+            transcribe_cmd(&temp[1], info, i + 2);
         else
-            transcribe_cmd(temp, info);
+            transcribe_cmd(temp, info, i + 2);
         ml_destroy_str_array(temp);
     }
 }
