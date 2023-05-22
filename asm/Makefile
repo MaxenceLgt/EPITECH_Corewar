@@ -36,7 +36,7 @@ INCLUDE =	include/	\
 
 NAME	=	asm
 
-CFLAGS = $(INCLUDE:%=-I%) -Wall -Wextra -g
+CFLAGS = $(INCLUDE:%=-I%) -Wall -Wextra
 
 OBJ	=	$(SRC:.c=.o)
 
