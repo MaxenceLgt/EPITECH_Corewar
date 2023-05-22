@@ -35,7 +35,7 @@ static int count_size_cmd(char **cmd)
     return (result);
 }
 
-static int calculate_size_cmd(char *cmd)
+int calculate_size_cmd(char *cmd)
 {
     int size_line = 0;
     size_t parser = 0;
@@ -43,11 +43,14 @@ static int calculate_size_cmd(char *cmd)
 
     if (!cmd_arr)
         return (size_line);
-    if (line_is_label(cmd_arr[parser]) && !cmd_arr[parser + 1])
+    if (line_is_label(cmd_arr[parser]) && !cmd_arr[parser + 1]) {
+        ml_destroy_str_array(cmd_arr);
         return (size_line);
+    }
     if (line_is_label(cmd_arr[parser]))
         parser++;
     size_line = count_size_cmd(&cmd_arr[parser]);
+    ml_destroy_str_array(cmd_arr);
     return (size_line);
 }
 
