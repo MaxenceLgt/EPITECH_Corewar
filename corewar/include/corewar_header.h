@@ -23,6 +23,7 @@
 
     typedef struct virtual_machine {
         unsigned char *vm;
+        size_t nbr_live;
         size_t cycle_to_die;
         size_t cycle_delta;
         ml_list *champs_data;
@@ -35,5 +36,6 @@
     // INIT
 
     vm_t *init_vm(char **av);
+    int parse_args(vm_t *vm, char **av);
 
 #endif /* !COREWAR_HEADER_ */
