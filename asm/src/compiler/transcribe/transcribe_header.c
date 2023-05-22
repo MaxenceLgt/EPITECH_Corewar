@@ -6,6 +6,7 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "asm_head.h"
 
 static char *get_between_quote(char *line)
@@ -37,7 +38,7 @@ void change_endians(void *data, size_t size)
 
 void transcribe_header(compiler_t *info)
 {
-    header_t header;
+    header_t header = {};
     char *name = get_between_quote(info->f_lines[0]);
     char *comment = get_between_quote(info->f_lines[1]);
 
@@ -54,4 +55,6 @@ void transcribe_header(compiler_t *info)
     header.prog_size = calculate_prog_size(&info->f_lines[2]);
     change_endians(&header.prog_size, sizeof(u_int32_t));
     write(info->fd_out, &header, sizeof(header_t));
+    free(name);
+    free(comment);
 }
