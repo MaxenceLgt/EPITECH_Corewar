@@ -55,8 +55,9 @@
     int calculate_prog_size(char **prog);
     void transcribe_body(char **body, compiler_t *info);
     void transcribe_register(char *nb_str, int fd_out);
-    void transcribe_direct_or_ind(char *str, int fd_out);
+    void transcribe_direct_or_ind(char *str, compiler_t *info, size_t pos);
     void transcribe_index(char *str, compiler_t *info, size_t i);
     void transcribe_label(compiler_t *info, size_t i, char *name);
+    void transcribe_direct_label(compiler_t *info, size_t pos, char *name);
 
 #endif /* !ASM_HEAD_ */
