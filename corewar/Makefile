@@ -5,7 +5,8 @@
 ## Makefile
 ##
 
-SRC	= 	src/doc/help.c			\
+SRC	= 	src/change_endians.c	\
+		src/doc/help.c			\
 		\
 		src/tools/op.c			\
 		\

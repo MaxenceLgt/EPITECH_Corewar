@@ -45,6 +45,10 @@
         ml_list *champs_data;
     } vm_t;
 
+    // ROOT
+
+    void change_endians(void *data, size_t size);
+
     // DOC
 
     int manage_help(int ac, char **av);
@@ -55,5 +59,6 @@
     int parse_args(vm_t *vm, int ac, char **av);
     int handle_cycles(vm_t *vm, char **av, size_t *i);
     int handle_champ(vm_t *vm, char **av, size_t *i);
+    void init_file_content(vm_t *vm);
 
 #endif /* !COREWAR_HEADER_ */

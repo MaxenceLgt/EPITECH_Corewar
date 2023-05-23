@@ -8,7 +8,6 @@
 #include <stdlib.h>
 #include "op.h"
 #include "corewar_header.h"
-void get_file_info(champ_t *node, char *file);
 
 vm_t *init_vm(UNUSED int ac, char **av)
 {
@@ -26,5 +25,6 @@ vm_t *init_vm(UNUSED int ac, char **av)
     vm->nb_champ = 0;
     if (parse_args(vm, ac, av) == 84)
         return NULL;
+    init_file_content(vm);
     return vm;
 }
