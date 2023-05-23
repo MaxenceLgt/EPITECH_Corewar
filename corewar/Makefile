@@ -16,6 +16,8 @@ SRC	= 	src/doc/help.c			\
 		src/init/data_handling/handle_champ.c	\
 		src/init/data_handling/handle_cycles.c	\
 		\
+		src/destroy/destroy_vm_data.c	\
+		\
 		src/process_corewar.c
 
 MAIN =	src/main.c

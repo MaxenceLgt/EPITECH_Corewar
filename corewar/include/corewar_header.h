@@ -16,7 +16,7 @@
     #include "defines_header.h"
     #include "op.h"
 
-    // STRUCT
+    // STRUCTS
 
     typedef struct process_struct {
         int reg[REG_NUMBER];
@@ -59,5 +59,9 @@
     // COREWAR
 
     int process_corewar(UNUSED vm_t *vm);
+
+    // FREE
+
+    void destroy_vm_data(vm_t *vm);
 
 #endif /* !COREWAR_HEADER_ */
