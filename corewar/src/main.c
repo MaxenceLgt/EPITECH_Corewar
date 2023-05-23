@@ -6,13 +6,14 @@
 */
 
 #include "corewar_header.h"
+#include <stdio.h>
 
 int main(int ac, char **av)
 {
-    explain_h(av);
-    if (ac < 3 || ac % 2 == 0)
+    if (ac > 2) explain_h(av);
+    if (ac == 1)
         return 84;
-    if (error_handling(av) == 84)
+    if (error_handling(av, ac) == 84)
         return 84;
     return 0;
 }

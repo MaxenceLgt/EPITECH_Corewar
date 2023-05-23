@@ -14,6 +14,6 @@
 || (av[2][i] >= 65 && av[2][i] <= 70)
 
     void explain_h(char **av);
-    int error_handling(char **av);
+    int error_handling(char **av, int ac);
 
 #endif /* !COREWAR_HEADER_ */

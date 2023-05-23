@@ -6,6 +6,7 @@
 */
 
 #include "corewar_header.h"
+#include <stdio.h>
 
 static int check_hexa(char **av)
 {
@@ -16,21 +17,26 @@ static int check_hexa(char **av)
     return 0;
 }
 
-static int check_nb(char **av)
+static int check_nb(char *av)
 {
-    for (int i = 0; av[4][i]; i++)
-        if (av[4][i] >= '0' && av[4][i] <= '9');
+    for (int i = 0; av[i]; i++)
+        if (av[i] >= '0' && av[i] <= '9');
         else
             return 84;
     return 0;
 }
 
-int error_handling(char **av)
+int error_handling(char **av, int ac)
 {
-    if (ml_strcmp(av[1], "-dump") != 0) return 84;
-    if (check_hexa(av) == 84) return 84;
-    if (check_nb(av) == 84) return 84;
-    if (ml_strcmp(av[3], "-n") != 0) return 84;
-    if (ml_strcmp(av[5], "-a") != 0) return 84;
+    int i;
+
+    for (i = 0; i < ac; i++) {
+        if (ml_strcmp(av[i], "-dump") == 0)
+            if (check_nb(av[i + 1]) == 84) return 84;
+        if (ml_strcmp(av[i], "-n") == 0)
+            if (check_nb(av[i + 1]) == 84) return 84;
+        if (ml_strcmp(av[i], "-a") == 0)
+            if (check_nb(av[i + 1]) == 84) return 84;
+    }
     return 0;
 }
