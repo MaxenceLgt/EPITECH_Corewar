@@ -24,5 +24,7 @@ vm_t *init_vm(int ac, char **av)
     vm->champs_data = NULL;
     if (parse_args(vm, ac, av) == 84)
         return NULL;
+    if (!init_file_content(vm))
+        return (NULL);
     return vm;
 }
