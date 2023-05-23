@@ -17,8 +17,8 @@
     // STRUCT
 
     typedef struct champs {
-        int load_address;
-        int prog_number;
+        char *load_address;
+        ssize_t prog_number;
         unsigned char *champ_content;
     } champ_t;
 
@@ -27,6 +27,7 @@
         size_t nbr_live;
         size_t cycle_to_die;
         size_t cycle_delta;
+        size_t nb_champ;
         ml_list *champs_data;
     } vm_t;
 
