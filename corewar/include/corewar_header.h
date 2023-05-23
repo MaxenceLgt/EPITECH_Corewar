@@ -10,16 +10,23 @@
 
     // INCLUDES
 
+    #include <stdbool.h>
     #include <sys/types.h>
     #include "ml_lib_head.h"
     #include "defines_header.h"
 
     // STRUCT
 
+    typedef struct process_struct {
+        int tmp;
+    } process_t;
+
     typedef struct champs {
-        char *load_address;
-        ssize_t prog_number;
+        size_t load_address;
+        size_t prog_number;
         unsigned char *champ_content;
+        bool is_alive;
+        ml_list *process;
     } champ_t;
 
     typedef struct virtual_machine {
