@@ -6,3 +6,5 @@ corewar/corewar
 .vscode/
 vgcore*
 coding-style*
+op.c
+op.h
