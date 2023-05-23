@@ -49,6 +49,9 @@ static bool presence_of_comment(size_t parser, char *buff)
         return (false);
     if (skip_quote(buff, &parser, 'c') == 84 || buff[parser] != '"')
         return (false);
+    for (parser++ ; buff[parser] != '\n' && buff[parser] != '\0'; parser++)
+        if (!CHAR_IS(buff[parser], " \t"))
+            return (false);
     return (true);
 }
 
