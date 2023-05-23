@@ -8,8 +8,9 @@
 #include <stdlib.h>
 #include "op.h"
 #include "corewar_header.h"
+void get_file_info(champ_t *node, char *file);
 
-vm_t *init_vm(int ac, char **av)
+vm_t *init_vm(UNUSED int ac, char **av)
 {
     vm_t *vm = malloc(sizeof(vm_t));
 
