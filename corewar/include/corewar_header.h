@@ -14,19 +14,26 @@
     #include <sys/types.h>
     #include "ml_lib_head.h"
     #include "defines_header.h"
+    #include "op.h"
 
     // STRUCT
 
     typedef struct process_struct {
-        int tmp;
+        int reg[REG_NUMBER];
+        int pos;
+        int goal_cycle;
+        bool carry;
     } process_t;
 
     typedef struct champs {
+        char *file;
+        char *name;
         size_t load_address;
         size_t prog_number;
         unsigned char *champ_content;
         bool is_alive;
         ml_list *process;
+        size_t prog_size;
     } champ_t;
 
     typedef struct virtual_machine {
