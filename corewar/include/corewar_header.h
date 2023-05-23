@@ -56,4 +56,8 @@
     int handle_cycles(vm_t *vm, char **av, size_t *i);
     int handle_champ(vm_t *vm, char **av, size_t *i);
 
+    // COREWAR
+
+    int process_corewar(UNUSED vm_t *vm);
+
 #endif /* !COREWAR_HEADER_ */

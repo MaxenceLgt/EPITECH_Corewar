@@ -16,5 +16,6 @@ int main(int ac, char **av)
     vm = init_vm(ac, av);
     if (vm == NULL)
         return 84;
+    process_corewar(vm);
     return 0;
 }
