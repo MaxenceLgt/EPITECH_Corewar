@@ -13,5 +13,6 @@
     void explain_h(char **av);
     int error_handling(char **av, int ac, int size_vm, int tot_vm);
     int init_flag_n(int size_vm, int tot_vm);
+    int com_live(int *bytes, char *player);
 
 #endif /* !COREWAR_HEADER_ */
