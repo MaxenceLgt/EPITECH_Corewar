@@ -46,8 +46,8 @@ static bool is_valid_arg(char *cmd, char **labels, op_t info, size_t pos)
         return (false);
     if (cmd_call_label(cmd) && !is_existant_label(cmd, labels))
         return (false);
-    if (!cmd_call_label(cmd) && ((type == T_DIR && !str_is_num(&cmd[1])) ||
-    (type == T_IND && !str_is_num(cmd))))
+    if (!cmd_call_label(cmd) && ((type == T_DIR && !str_num(&cmd[1])) ||
+    (type == T_IND && !str_num(cmd))))
         return (false);
     return (true);
 }
