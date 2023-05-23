@@ -7,7 +7,8 @@
 
 SRC	= 	src/explain.c 	\
 		src/error_handling.c 	\
-		src/command/live.c
+		src/commands/live.c 	\
+		src/commands/ld.c
 
 MAIN =	src/main.c
 
