@@ -66,4 +66,8 @@
 
     int add_champs_to_vm(vm_t *vm);
 
+    // COMMANDS
+
+    int command_live(int reg, vm_t *vm, champ_t *node);
+
 #endif /* !COREWAR_HEADER_ */
