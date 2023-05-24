@@ -56,6 +56,8 @@ void init_file_content(vm_t *vm)
     ml_node *temp = vm->champs_data->head;
     champ_t *node = NULL;
 
+    if (vm->nb_champ < 2)
+        return;
     for (; temp; temp = temp->next) {
         node = temp->data;
         get_header_info(node, node->file);

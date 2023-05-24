@@ -18,6 +18,8 @@ SRC	=	src/doc/help.c									\
 		src/init/data_handling/handle_champ.c			\
 		src/init/data_handling/handle_cycles.c			\
 		\
+		src/processing/add_champs_to_vm.c			\
+		\
 		src/processing/process_corewar.c				\
 		src/processing/display_winner.c
 
