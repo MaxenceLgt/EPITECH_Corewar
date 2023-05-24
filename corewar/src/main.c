@@ -17,6 +17,7 @@ int main(int ac, char **av)
     if (vm == NULL)
         return 84;
     add_champs_to_vm(vm);
+    process_corewar(vm);
     destroy_vm(vm);
     return 0;
 }

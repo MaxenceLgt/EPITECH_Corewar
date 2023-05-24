@@ -13,7 +13,7 @@ int handle_cycles(vm_t *vm, char **av, size_t *i)
         return 1;
     if (!ml_str_is_num(av[(*i) + 1]))
         return 1;
-    vm->cycle_to_die = ml_atoi(av[(*i) + 1]);
+    vm->max_cycles = ml_atoi(av[(*i) + 1]);
     (*i) += 2;
     return 0;
 }
