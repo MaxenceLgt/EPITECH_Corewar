@@ -48,6 +48,7 @@
     // ROOT
 
     void change_endians(void *data, size_t size);
+    void destroy_vm(vm_t *vm);
 
     // DOC
 
