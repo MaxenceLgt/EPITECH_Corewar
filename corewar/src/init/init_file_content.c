@@ -6,6 +6,7 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "corewar_header.h"
 
 static int transfer_char_to_int(char *str)
@@ -35,6 +36,21 @@ void get_header_info(champ_t *node, char *file)
     fclose(fd);
 }
 
+static void get_file_content(champ_t *node, char *file)
+{
+    FILE *fd = fopen(file, "r");
+
+    fseek(fd, sizeof(header_t), SEEK_SET);
+    node->champ_content = malloc(sizeof(char) * (node->prog_size + 1));
+    if (!node->champ_content) {
+        fclose(fd);
+        return;
+    }
+    fread(node->champ_content, sizeof(char), node->prog_size, fd);
+    node->champ_content[node->prog_size] = '\0';
+    fclose(fd);
+}
+
 void init_file_content(vm_t *vm)
 {
     ml_node *temp = vm->champs_data->head;
@@ -43,5 +59,6 @@ void init_file_content(vm_t *vm)
     for (; temp; temp = temp->next) {
         node = temp->data;
         get_header_info(node, node->file);
+        get_file_content(node, node->file);
     }
 }
