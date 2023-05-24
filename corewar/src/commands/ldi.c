@@ -7,7 +7,7 @@
 
 #include "corewar_header.h"
 
-int command_ldi(int par1, int par2, int reg, vm_t *vm)
+int command_ldi(int par, vm_t *vm)
 {
     return 0;
 }

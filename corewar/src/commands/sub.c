@@ -7,7 +7,8 @@
 
 #include "corewar_header.h"
 
-int command_sub(int reg1, int reg2, int reg3, vm_t *vm)
+int command_sub(int reg, process_t *process, vm_t *vm)
 {
+    process->carry = 1;
     return 0;
 }

@@ -7,7 +7,7 @@
 
 #include "corewar_header.h"
 
-int command_st(int reg, int par, vm_t *vm)
+int command_st(int par, vm_t *vm)
 {
     return 0;
 }
