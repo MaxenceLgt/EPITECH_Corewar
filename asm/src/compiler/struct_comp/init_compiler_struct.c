@@ -10,20 +10,11 @@
 
 static char *get_output_file(const char *file)
 {
-    char *output = NULL;
-    size_t count = 0;
+    char *output = output = malloc(sizeof(char) * (ml_strlen(file) + 2));
 
-    if (file[count] == '.' && file[count + 1] == '/')
-        count += 2;
-    for (; file[count] != '.' && file[count] != '\0'; count++);
-    if (file[count] == '\0')
-        return (NULL);
-    count++;
-    output = malloc(sizeof(char) * count + 4);
     if (!output)
         return (NULL);
-    output[0] = '\0';
-    ml_strncat(&output, file, count);
+    ml_strncpy(&output, file, ml_strlen(file) - 1);
     ml_strcat(&output, "cor");
     return (output);
 }
