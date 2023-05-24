@@ -22,7 +22,6 @@ SRC	=	src/char_managing/ml_char_is.c				\
 		src/str_managing/ml_put_nbr.c				\
 		src/str_managing/ml_strncat.c				\
 		src/str_managing/ml_char_is_in_lst.c		\
-		src/str_managing/ml_str_is_num.c 			\
 		\
 		src/array_managing/ml_str_tok.c				\
 		src/array_managing/ml_add_str_to_array.c	\
@@ -38,13 +37,17 @@ SRC	=	src/char_managing/ml_char_is.c				\
 		src/int_managing/ml_atoi.c					\
 		src/int_managing/ml_atof.c					\
 		src/int_managing/ml_itoa.c					\
+		src/int_managing/ml_atoi_b.c				\
 		\
 		src/list_managing/ml_create_list.c			\
 		src/list_managing/ml_add_node_back.c		\
 		src/list_managing/ml_add_node_front.c		\
 		src/list_managing/ml_display_list.c			\
 		src/list_managing/ml_destroy_node.c			\
-		src/list_managing/ml_destroy_list.c
+		src/list_managing/ml_destroy_list.c			\
+		\
+		src/file_managing/ml_get_file_size.c		\
+		src/file_managing/ml_get_file_content.c		\
 
 INCLUDE = include/
 

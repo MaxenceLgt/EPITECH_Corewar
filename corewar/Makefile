@@ -5,10 +5,18 @@
 ## Makefile
 ##
 
-SRC	= 	src/explain.c 	\
-		src/error_handling.c 	\
-		src/commands/live.c 	\
-		src/commands/ld.c
+SRC	=	src/doc/help.c									\
+		\
+		src/tools/op.c									\
+		src/tools/change_endians.c						\
+		src/tools/destroy_vm.c							\
+		\
+		src/init/init_vm.c								\
+		src/init/parse_args.c							\
+		src/init/init_file_content.c					\
+		\
+		src/init/data_handling/handle_champ.c			\
+		src/init/data_handling/handle_cycles.c
 
 MAIN =	src/main.c
 

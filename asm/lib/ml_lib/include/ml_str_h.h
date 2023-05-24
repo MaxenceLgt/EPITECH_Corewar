@@ -1,15 +1,16 @@
 /*
 ** EPITECH PROJECT, 2023
-** ml_str_head
+** ml_str_h
 ** File description:
-** ml_str_head
+** ml_str_h
 */
 
-#ifndef ml_STR_HEAD_
-    #define ml_STR_HEAD_
+#ifndef ml_STR_H_
+    #define ml_STR_H_
+
 
     #include <stdbool.h>
-    #include <unistd.h>
+    #include <sys/types.h>
 
     /**
      * @brief Verify if 'c' is alpha or num character.
@@ -109,14 +110,6 @@
     void ml_putchar(char const c);
 
     /**
-     * @brief ml_putchar_error function display 'c' into standar error output.
-     *
-     * @param c: Character to display.
-     * @return Nothing.
-    */
-    void ml_putchar_error(char const c);
-
-    /**
      * @brief ml_strcat function concatenate the content of 'src' into
      * 'dest' string considering that 'dest' has enough space allocated
      * to get 'src' content.
@@ -137,63 +130,6 @@
      * @returns Nothing.
     */
     void ml_strcpy(char **dest, char const *src);
-
-    /**
-     * @brief ml_put_nbr function display the content of an int
-     * in the standar output.
-     *
-     * @param nb: Number to display.
-     * @return Nothing.
-    */
-    void ml_put_nbr(int nb);
-
-    /**
-     * @brief ml_revstr function reverse 'str' string content.
-     *
-     * @param str: Pointer to the string to reverse.
-     * @return Nothing.
-    */
-    void ml_revstr(char **str);
-
-    /**
-     * @brief ml_strlowcase function set all uppercase char from 'str'
-     * in lowcase char.
-     *
-     * @param str: Pointer to the string to transform.
-     * @return Nothing.
-    */
-    void ml_strlowcase(char **str);
-
-    /**
-     * @brief ml_strncat function concatenate the first 'n' bytes from 'src'
-     * into 'dest' string, considering enough space is allocated inside 'dest'.
-     *
-     * @param dest: Pointer to the string to be concatenated.
-     * @param src: String to concatenate.
-     * @param nb: Number of bytes to concatenate.
-     * @return Nothing.
-    */
-    void ml_strncat(char **dest, char const *src, size_t nb);
-
-    /**
-     * @brief ml_strncpy function copy the first 'n' bytes from 'src' into
-     * 'dest' string considering enough space is allocated inside 'dest'.
-     *
-     * @param dest: Pointer to the string which recieve copy.
-     * @param src: String to be copied.
-     * @param n: Number of bytes to copy.
-     * @return Nothing.
-    */
-    void ml_strncpy(char **dest ,char const *src, size_t n);
-
-    /**
-     * @brief ml_strupcase function set all lowcase char from 'str'
-     * in uppercase char.
-     *
-     * @param str: Pointer to the string you want to transform.
-     * @return Nothing.
-    */
-    void ml_strupcase(char **str);
 
     /**
      * @brief ml_char_is_in_lst function verify if 'c' char is present
@@ -227,12 +163,11 @@
     char *ml_strdup(char const *src);
 
     /**
-     * @brief ml_str_is_num function verify if a string is only
-     * composed of alpha characters.
+     * @brief ml_revstr function reverse 'str' string content.
      *
-     * @param str: String to be verified.
-     * @return true if str is only composed of alpha char false else.
+     * @param str: Pointer to the string to reverse.
+     * @return Nothing.
     */
-    int ml_str_is_num(char *str);
+    void ml_revstr(char **str);
 
-#endif /* !ml_STR_HEAD_ */
+#endif /* !ml_STR_H_ */
