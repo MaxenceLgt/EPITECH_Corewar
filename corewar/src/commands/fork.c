@@ -6,3 +6,8 @@
 */
 
 #include "corewar_header.h"
+
+int command_fork(int reg, vm_t *vm)
+{
+    return 0;
+}
