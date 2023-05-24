@@ -73,5 +73,6 @@
     int command_zjmp(int reg, vm_t *vm);
     int command_fork(int reg, vm_t *vm);
     int command_lfork(int reg, vm_t *vm);
+    int command_aff(int reg, vm_t *vm);
 
 #endif /* !COREWAR_HEADER_ */

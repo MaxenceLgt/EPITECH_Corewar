@@ -15,7 +15,8 @@ SRC	=	src/doc/help.c									\
 		src/commands/ld.c								\
 		src/commands/zjmp.c								\
 		src/commands/fork.c								\
-		src/commands/lfork.c								\
+		src/commands/lfork.c							\
+		src/commands/aff.c								\
 		\
 		src/init/init_vm.c								\
 		src/init/parse_args.c							\
