@@ -17,6 +17,16 @@ SRC	=	src/doc/help.c									\
 		src/commands/fork.c								\
 		src/commands/lfork.c							\
 		src/commands/aff.c								\
+		src/commands/st.c								\
+		src/commands/sti.c								\
+		src/commands/add.c								\
+		src/commands/sub.c								\
+		src/commands/and.c								\
+		src/commands/or.c								\
+		src/commands/xor.c								\
+		src/commands/ldi.c								\
+		src/commands/lldi.c								\
+		src/commands/lld.c								\
 		\
 		src/init/init_vm.c								\
 		src/init/parse_args.c							\

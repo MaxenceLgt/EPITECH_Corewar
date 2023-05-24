@@ -6,3 +6,8 @@
 */
 
 #include "corewar_header.h"
+
+int command_lldi(int par1, int par2, int reg, vm_t *vm)
+{
+    return 0;
+}
