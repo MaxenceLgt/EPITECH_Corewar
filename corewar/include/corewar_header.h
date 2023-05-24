@@ -62,4 +62,8 @@
     int handle_champ(vm_t *vm, char **av, size_t *i);
     void init_file_content(vm_t *vm);
 
+    // PROCESSING
+
+    int add_champs_to_vm(vm_t *vm);
+
 #endif /* !COREWAR_HEADER_ */

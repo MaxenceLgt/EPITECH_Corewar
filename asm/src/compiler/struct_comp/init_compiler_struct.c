@@ -13,6 +13,8 @@ static char *get_output_file(const char *file)
     char *output = NULL;
     size_t count = 0;
 
+    if (file[count] == '.' && file[count + 1] == '/')
+        count += 2;
     for (; file[count] != '.' && file[count] != '\0'; count++);
     if (file[count] == '\0')
         return (NULL);

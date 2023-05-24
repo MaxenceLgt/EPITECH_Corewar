@@ -16,6 +16,7 @@ int main(int ac, char **av)
     vm = init_vm(ac, av);
     if (vm == NULL)
         return 84;
+    add_champs_to_vm(vm);
     destroy_vm(vm);
     return 0;
 }
