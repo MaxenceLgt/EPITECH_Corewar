@@ -7,7 +7,7 @@
 
 #include "corewar_header.h"
 
-int check_alive_state(vm_t *vm)
+int check_alive_state(UNUSED vm_t *vm)
 {
     return 0;
 }

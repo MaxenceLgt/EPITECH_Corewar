@@ -7,7 +7,7 @@
 
 #include "corewar_header.h"
 
-int exec_prog(vm_t *vm)
+int exec_prog(UNUSED vm_t *vm)
 {
     return 0;
 }
