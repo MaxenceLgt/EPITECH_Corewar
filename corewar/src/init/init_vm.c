@@ -37,6 +37,7 @@ vm_t *init_vm(UNUSED int ac, char **av)
         destroy_vm(vm);
         return NULL;
     }
-    init_file_content(vm);
+    if (vm->nb_champ >= 2)
+        init_file_content(vm);
     return vm;
 }
