@@ -6,41 +6,49 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "corewar_header.h"
-
-void change_endians(void *data, size_t size)
-{
-    unsigned char *byte = (unsigned char *)data;
-    size_t i = 0;
-    unsigned char temp = 0;
-
-    for (; i < size / 2; i++) {
-        temp = byte[i];
-        byte[i] = byte[size - i - 1];
-        byte[size - i - 1] = temp;
-    }
-}
 
 static int transfer_char_to_int(char *str)
 {
     int res = 0;
 
-    res |= str[0] << 4;
+    res |= str[0];
+    res |= str[1] << 8;
+    res |= str[2] << 16;
+    res |= str[3] << 24;
     return (res);
 }
 
-void get_file_info(UNUSED champ_t *node, char *file)
+void get_header_info(champ_t *node, char *file)
 {
     FILE *fd = fopen(file, "r");
-    fpos_t pos;
     char name[PROG_NAME_LENGTH] = "";
     char size[4] = "";
 
     fseek(fd, 4, SEEK_SET);
     fread(name, sizeof(char), PROG_NAME_LENGTH, fd);
+    node->name = ml_strdup(name);
     fseek(fd, 4, SEEK_CUR);
     fread(size, sizeof(int), 1, fd);
     change_endians(&size, sizeof(int));
+    node->prog_size = (size_t)transfer_char_to_int(size);
+    fclose(fd);
+}
+
+static void get_file_content(champ_t *node, char *file)
+{
+    FILE *fd = fopen(file, "r");
+
+    fseek(fd, sizeof(header_t), SEEK_SET);
+    node->champ_content = malloc(sizeof(char) * (node->prog_size + 1));
+    if (!node->champ_content) {
+        fclose(fd);
+        return;
+    }
+    fread(node->champ_content, sizeof(char), node->prog_size, fd);
+    node->champ_content[node->prog_size] = '\0';
+    fclose(fd);
 }
 
 void init_file_content(vm_t *vm)
@@ -50,6 +58,7 @@ void init_file_content(vm_t *vm)
 
     for (; temp; temp = temp->next) {
         node = temp->data;
-        get_file_info(node, node->file);
+        get_header_info(node, node->file);
+        get_file_content(node, node->file);
     }
 }
