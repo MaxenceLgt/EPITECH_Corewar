@@ -7,7 +7,7 @@
 
 #include "corewar_header.h"
 
-int command_live(int reg, vm_t *vm, champ_t *champ)
+int command_live(int par, vm_t *vm, champ_t *champ)
 {
     champ->is_alive = true;
     vm->nbr_live++;

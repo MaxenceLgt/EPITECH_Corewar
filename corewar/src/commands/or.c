@@ -4,3 +4,5 @@
 ** File description:
 ** commands
 */
+
+#include "corewar_header.h"

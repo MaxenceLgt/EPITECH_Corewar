@@ -69,6 +69,7 @@
     // COMMANDS
 
     int command_live(int reg, vm_t *vm, champ_t *node);
-    int command_ld(int reg, vm_t *vm, process_t *process);
+    int command_ld(int par, int reg, vm_t *vm, process_t *process);
+    int command_zjmp(int reg, vm_t *vm);
 
 #endif /* !COREWAR_HEADER_ */

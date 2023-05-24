@@ -13,6 +13,7 @@ SRC	=	src/doc/help.c									\
 		\
 		src/commands/live.c								\
 		src/commands/ld.c								\
+		src/commands/zjmp.c								\
 		\
 		src/init/init_vm.c								\
 		src/init/parse_args.c							\
