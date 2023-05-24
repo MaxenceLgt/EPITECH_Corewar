@@ -33,6 +33,7 @@
     /// ERROR HANDLING ///
 
     int manage_errors(const char *file);
+    bool str_num(char *str);
     bool file_is_readable(const char *file);
     bool presence_of_header(char *buff);
     int check_cmd_validity(compiler_t *info);
