@@ -41,6 +41,8 @@
         size_t nbr_live;
         size_t cycle_to_die;
         size_t cycle_delta;
+        size_t current_cycle;
+        size_t max_cycles;
         size_t nb_champ;
         ml_list *champs_data;
     } vm_t;
@@ -65,5 +67,6 @@
     // COREWAR
 
     int process_corewar(UNUSED vm_t *vm);
+    void display_winner(vm_t *vm);
 
 #endif /* !COREWAR_HEADER_ */
