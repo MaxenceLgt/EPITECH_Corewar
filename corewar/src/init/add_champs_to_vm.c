@@ -18,7 +18,6 @@ static int set_equivalent(vm_t *vm)
         for (size_t pos = 0; pos < champ->prog_size; pos++)
             vm->vm[i + pos] = champ->champ_content[pos];
     }
-    write(1, vm->vm, MEM_SIZE);
     return (0);
 }
 
@@ -62,5 +61,5 @@ int add_champs_to_vm(vm_t *vm)
         vm->vm[i] = 0;
     if (all_adress_are_null(vm->champs_data->head))
         return (set_equivalent(vm));
-    return (0);
+    return (set_load_adress(vm));
 }

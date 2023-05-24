@@ -63,10 +63,10 @@
     int handle_cycles(vm_t *vm, char **av, size_t *i);
     int handle_champ(vm_t *vm, char **av, size_t *i);
     void init_file_content(vm_t *vm);
-
-    // PROCESSING
-
     int add_champs_to_vm(vm_t *vm);
+    int set_load_adress(vm_t *vm);
+    size_t get_load(ml_list *champ_lst);
+    bool only_one_load(ml_list *lst_champ);
 
     // COREWAR
 
