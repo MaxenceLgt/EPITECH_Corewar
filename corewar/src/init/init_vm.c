@@ -9,6 +9,16 @@
 #include "op.h"
 #include "corewar_header.h"
 
+static void init_default_cycle_data(vm_t *vm)
+{
+    vm->nbr_live = NBR_LIVE;
+    vm->cycle_to_die = CYCLE_TO_DIE;
+    vm->cycle_delta = CYCLE_DELTA;
+    vm->current_cycle = 0;
+    vm->max_cycles = 0;
+    return;
+}
+
 vm_t *init_vm(UNUSED int ac, char **av)
 {
     vm_t *vm = malloc(sizeof(vm_t));
@@ -20,9 +30,7 @@ vm_t *init_vm(UNUSED int ac, char **av)
         destroy_vm(vm);
         return NULL;
     }
-    vm->nbr_live = NBR_LIVE;
-    vm->cycle_to_die = CYCLE_TO_DIE;
-    vm->cycle_delta = CYCLE_DELTA;
+    init_default_cycle_data(vm);
     vm->champs_data = NULL;
     vm->nb_champ = 0;
     if (parse_args(vm, ac, av) == 84) {

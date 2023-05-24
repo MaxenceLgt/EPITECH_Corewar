@@ -19,6 +19,7 @@ int main(int ac, char **av)
     if (add_champs_to_vm(vm) == 84){
         destroy_vm(vm);
         return (84);
+    process_corewar(vm);
     }
     destroy_vm(vm);
     return 0;
