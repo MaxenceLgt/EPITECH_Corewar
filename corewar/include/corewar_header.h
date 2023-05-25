@@ -65,6 +65,7 @@
     int parse_args(vm_t *vm, int ac, char **av);
     int handle_cycles(vm_t *vm, char **av, size_t *i);
     int handle_champ(vm_t *vm, char **av, size_t *i);
+    int handle_champ_flags(champ_t *champ, vm_t *vm, char **av, size_t *i);
     void init_file_content(vm_t *vm);
     int add_champs_to_vm(vm_t *vm);
     int set_load_adress(vm_t *vm);
