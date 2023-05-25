@@ -85,6 +85,8 @@
     int command_sub(int reg, process_t *process, vm_t *vm);
     int command_xor(int par, process_t *process, vm_t *vm);
 
+    int process_corewar(UNUSED vm_t *vm);
+    void display_winner(vm_t *vm);
     // TOOLS
     int get_hexa(unsigned char buffer);
 
