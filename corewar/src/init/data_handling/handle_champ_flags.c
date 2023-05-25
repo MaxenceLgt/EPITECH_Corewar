@@ -9,6 +9,8 @@
 
 static int handle_n_flag(champ_t *champ, vm_t *vm, char **av, size_t *i)
 {
+    if (av[(*i)] == NULL)
+        return 0;
     if (!ml_strcmp("-n", av[(*i)]) && av[(*i) + 1] == NULL) {
         write(2, "Invalid flag value: Refer to -h.\n", 33);
         return 1;
@@ -30,6 +32,8 @@ static int handle_n_flag(champ_t *champ, vm_t *vm, char **av, size_t *i)
 
 static int handle_a_flag(champ_t *champ, vm_t *vm, char **av, size_t *i)
 {
+    if (av[(*i)] == NULL)
+        return 0;
     if (!ml_strcmp("-a", av[(*i)]) && av[(*i) + 1] == NULL) {
         write(2, "Invalid flag value: Refer to -h.\n", 33);
         return 1;
