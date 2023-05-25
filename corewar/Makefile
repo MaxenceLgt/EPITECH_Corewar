@@ -22,7 +22,9 @@ SRC	=	src/doc/help.c									\
 		src/init/data_handling/handle_cycles.c			\
 		\
 		src/processing/process_corewar.c				\
-		src/processing/display_winner.c
+		src/processing/display_winner.c					\
+		src/processing/check_alive_state.c				\
+		src/processing/exec_prog.c
 
 MAIN =	src/main.c
 

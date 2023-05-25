@@ -52,7 +52,7 @@ static int init_process(champ_t *champ, vm_t *vm, char **av, size_t *i)
 
     if (process == NULL)
         return 1;
-    process->carry = false;
+    process->carry = true;
     process->goal_cycle = 0;
     process->pos = champ->load_address;
     for (size_t reg_i = 0; reg_i < REG_NUMBER; reg_i++)
@@ -67,9 +67,17 @@ static int init_process(champ_t *champ, vm_t *vm, char **av, size_t *i)
 static int handle_champ_content(champ_t *champ, vm_t *vm, char **av, size_t *i)
 {
     int fd = open(av[(*i)], O_RDONLY);
+    char *extension = &av[(*i)][ml_strlen(av[(*i)]) - 4];
 
-    if (fd == -1)
+    if (fd == -1) {
+        free(champ);
+        write(2, "Invalid file.\n", 15);
         return 1;
+    } else if (ml_strcmp(extension, ".cor")) {
+        free(champ);
+        write(2, "Invalid file format.\n", 21);
+        return 1;
+    }
     champ->file = ml_strdup(av[(*i)]);
     if (champ->file == NULL)
         return 1;
@@ -93,5 +101,10 @@ int handle_champ(vm_t *vm, char **av, size_t *i)
     champ->prog_size = 0;
     if (!ml_strcmp(av[(*i)], "-n") || !ml_strcmp(av[(*i)], "-a"))
         handle_champ_flags(champ, vm, av, i);
+    if (av[(*i)] == NULL) {
+        write(2, "No file: Refer to -h.\n", 22);
+        free(champ);
+        return 1;
+    }
     return handle_champ_content(champ, vm, av, i);
 }
