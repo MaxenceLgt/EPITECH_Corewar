@@ -71,21 +71,22 @@
     // COMMANDS
 
     int command_live(vm_t *vm, champ_t *champ);
-    int command_ld(int par, vm_t *vm, process_t *process);
-    int command_zjmp(int reg, vm_t *vm);
-    int command_fork(int par, vm_t *vm);
-    int command_lfork(int par, vm_t *vm);
-    int command_aff(int reg, vm_t *vm);
-    int command_add(process_t *process, vm_t *vm);
-    int command_and(int par, process_t *process, vm_t *vm);
-    int command_ldi(int par, vm_t *vm);
-    int command_lld(int par, process_t *process, vm_t *vm);
-    int command_lldi(int par, process_t *process, vm_t *vm);
-    int command_or(int par, process_t *process, vm_t *vm);
-    int command_st(int par, vm_t *vm);
-    int command_sti(int par, vm_t *vm);
-    int command_sub(int reg, process_t *process, vm_t *vm);
-    int command_xor(int par, process_t *process, vm_t *vm);
+    int command_ld(int reg, int arg, UNUSED vm_t *vm, process_t *process);
+    int command_zjmp(int arg, process_t *process, UNUSED vm_t *vm);
+    int command_lfork(UNUSED int par, UNUSED vm_t *vm);
+    int command_lfork(UNUSED int par, UNUSED vm_t *vm);
+    int command_aff(UNUSED int reg, UNUSED vm_t *vm);
+    int command_add(process_t *process, UNUSED vm_t *vm, int *reg);
+    int command_and(UNUSED int par, process_t *process, UNUSED vm_t *vm);
+    int command_ldi(int *index, int reg, process_t *process, UNUSED vm_t *vm);
+    int command_lld(UNUSED int par, process_t *process, UNUSED vm_t *vm);
+    int command_lldi(UNUSED int par, process_t *process, UNUSED vm_t *vm);
+    int command_or(UNUSED int par, process_t *process, UNUSED vm_t *vm);
+    int command_st(int *reg, process_t *process, UNUSED vm_t *vm);
+    int command_sti(UNUSED int *index, int reg, process_t *process, \
+UNUSED vm_t *vm);
+    int command_sub(int *reg, process_t *process, UNUSED vm_t *vm);
+    int command_xor(UNUSED int par, process_t *process, UNUSED vm_t *vm);
 
     int process_corewar(UNUSED vm_t *vm);
     void display_winner(vm_t *vm);

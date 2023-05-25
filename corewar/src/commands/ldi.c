@@ -7,7 +7,9 @@
 
 #include "corewar_header.h"
 
-int command_ldi(UNUSED int par, UNUSED vm_t *vm)
+int command_ldi(int *index, int reg, process_t *process, UNUSED vm_t *vm)
 {
+    process->pos = index[0] + index[1];
+    process->reg[reg] = process->pos;
     return 0;
 }

@@ -7,7 +7,8 @@
 
 #include "corewar_header.h"
 
-int command_st(UNUSED int par, UNUSED vm_t *vm)
+int command_st(int *reg, process_t *process, UNUSED vm_t *vm)
 {
+    process->reg[reg[1]] = process->reg[0];
     return 0;
 }
