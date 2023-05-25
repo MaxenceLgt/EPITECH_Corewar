@@ -10,7 +10,6 @@
 int main(int ac, char **av)
 {
     vm_t *vm;
-    champ_t *champ;
 
     if (manage_help(ac, av))
         return 0;

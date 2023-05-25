@@ -8,7 +8,9 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <sys/stat.h>
 #include "corewar_header.h"
+
 
 static int handle_champ_flags(champ_t *champ, vm_t *vm, char **av, size_t *i)
 {
@@ -67,9 +69,20 @@ static int init_process(champ_t *champ, vm_t *vm, char **av, size_t *i)
 static int handle_champ_content(champ_t *champ, vm_t *vm, char **av, size_t *i)
 {
     int fd = open(av[(*i)], O_RDONLY);
+    struct stat sb;
+    stat(av[(*i)], &sb);
+    int size = sb.st_size;
+    char *buffer = malloc(sizeof(char) * (size + 1));
 
     if (fd == -1)
         return 1;
+    else {
+        read(fd, buffer, size);
+        buffer[size] = '\0';
+        for (int i = 0; i < size; i++) {
+            get_hexa(buffer[i]);
+        }
+    }
     champ->file = ml_strdup(av[(*i)]);
     if (champ->file == NULL)
         return 1;

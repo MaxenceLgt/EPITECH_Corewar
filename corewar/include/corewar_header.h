@@ -68,13 +68,13 @@
 
     // COMMANDS
 
-    int command_live(int reg, vm_t *vm, champ_t *champ);
+    int command_live(vm_t *vm, champ_t *champ);
     int command_ld(int par, vm_t *vm, process_t *process);
     int command_zjmp(int reg, vm_t *vm);
     int command_fork(int par, vm_t *vm);
     int command_lfork(int par, vm_t *vm);
     int command_aff(int reg, vm_t *vm);
-    int command_add(int reg, process_t *process, vm_t *vm);
+    int command_add(process_t *process, vm_t *vm);
     int command_and(int par, process_t *process, vm_t *vm);
     int command_ldi(int par, vm_t *vm);
     int command_lld(int par, process_t *process, vm_t *vm);
@@ -84,5 +84,8 @@
     int command_sti(int par, vm_t *vm);
     int command_sub(int reg, process_t *process, vm_t *vm);
     int command_xor(int par, process_t *process, vm_t *vm);
+
+    // TOOLS
+    int get_hexa(unsigned char buffer);
 
 #endif /* !COREWAR_HEADER_ */

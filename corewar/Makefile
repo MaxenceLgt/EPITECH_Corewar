@@ -10,6 +10,7 @@ SRC	=	src/doc/help.c									\
 		src/tools/op.c									\
 		src/tools/change_endians.c						\
 		src/tools/destroy_vm.c							\
+		src/tools/traduction.c 							\
 		\
 		src/commands/live.c								\
 		src/commands/ld.c								\
