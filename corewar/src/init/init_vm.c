@@ -16,6 +16,7 @@ static void init_default_cycle_data(vm_t *vm)
     vm->cycle_delta = CYCLE_DELTA;
     vm->current_cycle = 0;
     vm->max_cycles = 0;
+    vm->last_check = 0;
     return;
 }
 

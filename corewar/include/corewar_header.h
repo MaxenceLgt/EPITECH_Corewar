@@ -40,6 +40,7 @@
     typedef struct virtual_machine {
         unsigned char *vm;
         size_t nbr_live;
+        size_t last_check;
         size_t cycle_to_die;
         size_t cycle_delta;
         size_t current_cycle;
@@ -52,6 +53,7 @@
 
     void change_endians(void *data, size_t size);
     void destroy_vm(vm_t *vm);
+    void destroy_champ(void *data);
 
     // DOC
 
