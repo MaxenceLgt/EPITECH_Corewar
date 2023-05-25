@@ -9,7 +9,9 @@
 
 int get_hexa(unsigned char buffer)
 {
-    UNUSED int nb = buffer;
+    int nb = buffer;
 
-    return nb;
+    ml_printf("%c%c\n", "0123456789abcdef"[nb / 16], "0123456789abcdef"[nb % 16]);
+
+    return 0;
 }

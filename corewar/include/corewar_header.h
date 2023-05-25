@@ -22,6 +22,7 @@
         int reg[REG_NUMBER];
         int pos;
         int goal_cycle;
+        int pc;
         bool carry;
     } process_t;
 
@@ -72,24 +73,27 @@
 
     int command_live(vm_t *vm, champ_t *champ);
     int command_ld(int reg, int arg, UNUSED vm_t *vm, process_t *process);
-    int command_zjmp(int arg, process_t *process, UNUSED vm_t *vm);
-    int command_lfork(UNUSED int par, UNUSED vm_t *vm);
-    int command_lfork(UNUSED int par, UNUSED vm_t *vm);
-    int command_aff(UNUSED int reg, UNUSED vm_t *vm);
+    int command_zjmp(int index, process_t *process, UNUSED vm_t *vm);
+    int command_lfork(UNUSED int arg, UNUSED vm_t *vm);
+    int command_lfork(UNUSED int arg, UNUSED vm_t *vm);
+    int command_aff(int reg, UNUSED vm_t *vm, process_t *process, \
+champ_t *champ);
     int command_add(process_t *process, UNUSED vm_t *vm, int *reg);
-    int command_and(UNUSED int par, process_t *process, UNUSED vm_t *vm);
+    int command_and(UNUSED int arg, process_t *process, UNUSED vm_t *vm);
     int command_ldi(int *index, int reg, process_t *process, UNUSED vm_t *vm);
-    int command_lld(UNUSED int par, process_t *process, UNUSED vm_t *vm);
-    int command_lldi(UNUSED int par, process_t *process, UNUSED vm_t *vm);
-    int command_or(UNUSED int par, process_t *process, UNUSED vm_t *vm);
-    int command_st(int *reg, process_t *process, UNUSED vm_t *vm);
-    int command_sti(UNUSED int *index, int reg, process_t *process, \
-UNUSED vm_t *vm);
+    int command_lld(int arg, int reg, process_t *process, UNUSED vm_t *vm);
+    int command_lldi(UNUSED int arg, process_t *process, UNUSED vm_t *vm);
+    int command_or(UNUSED int arg, process_t *process, UNUSED vm_t *vm);
+    int command_st(int reg, int arg, process_t *process, UNUSED vm_t *vm);
+    int command_sti(int *index, int reg, process_t *process, UNUSED vm_t *vm);
     int command_sub(int *reg, process_t *process, UNUSED vm_t *vm);
-    int command_xor(UNUSED int par, process_t *process, UNUSED vm_t *vm);
+    int command_xor(UNUSED int arg, process_t *process, UNUSED vm_t *vm);
+
+    // COREWARE
 
     int process_corewar(UNUSED vm_t *vm);
     void display_winner(vm_t *vm);
+
     // TOOLS
     int get_hexa(unsigned char buffer);
 
