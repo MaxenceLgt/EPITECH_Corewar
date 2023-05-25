@@ -19,6 +19,8 @@ static int check_vm_run(vm_t *vm)
 int process_corewar(UNUSED vm_t *vm)
 {
     while (check_vm_run(vm)) {
+        exec_prog(vm);
+        check_alive_state(vm);
         vm->current_cycle++;
     }
     display_winner(vm);

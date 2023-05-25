@@ -50,7 +50,18 @@ static int set_changing_start(vm_t *vm, size_t start)
 
 int set_load_adress(vm_t *vm)
 {
+    int offset = MEM_SIZE / vm->nb_champ;
+    ml_node *champ = vm->champs_data->head;
+    champ_t *info = NULL;
+
     if (only_one_load(vm->champs_data))
         return (set_changing_start(vm, get_load(vm->champs_data)));
+    for (size_t i = 0; champ; champ = champ->next, i += offset) {
+        info = champ->data;
+        if (info->load_address != 0)
+            load_champ(info, info->load_address, &vm->vm);
+        else
+            load_champ(info, i, &vm->vm);
+    }
     return (0);
 }

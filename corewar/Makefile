@@ -21,6 +21,7 @@ SRC	=	src/doc/help.c									\
 		\
 		src/init/data_handling/handle_champ.c			\
 		src/init/data_handling/handle_cycles.c			\
+		src/init/data_handling/handle_champ_flags.c		\
 		\
 		src/processing/process_corewar.c				\
 		src/processing/display_winner.c					\
@@ -40,7 +41,9 @@ SRC	=	src/doc/help.c									\
 		src/commands/xor.c						\
 		src/commands/ldi.c								\
 		src/commands/lldi.c								\
-		src/commands/lld.c
+		src/commands/lld.c					\
+		src/processing/check_alive_state.c				\
+		src/processing/exec_prog.c
 
 MAIN =	src/main.c
 
