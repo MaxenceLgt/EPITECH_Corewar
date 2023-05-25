@@ -10,25 +10,22 @@ SRC	=	src/doc/help.c									\
 		src/tools/op.c									\
 		src/tools/change_endians.c						\
 		src/tools/destroy_vm.c							\
-		src/tools/traduction.c	src/doc/help.c									\
-		\
-		src/tools/op.c									\
-		src/tools/change_endians.c						\
-		src/tools/destroy_vm.c							\
+		src/tools/traduction.c							\
 		\
 		src/init/init_vm.c								\
 		src/init/parse_args.c							\
 		src/init/init_file_content.c					\
+		src/init/add_champs_to_vm.c						\
+		src/init/load_adress_verification.c				\
+		src/init/set_load_adress.c						\
 		\
 		src/init/data_handling/handle_champ.c			\
 		src/init/data_handling/handle_cycles.c			\
 		\
-		src/processing/add_champs_to_vm.c			\
-		\
 		src/processing/process_corewar.c				\
-								\
+		src/processing/display_winner.c					\
 		\
-		src/proccommands/live.c								\
+		src/proccommands/live.c							\
 		src/commands/ld.c								\
 		src/commands/zjmp.c								\
 		src/commands/fork.c								\
@@ -40,19 +37,10 @@ SRC	=	src/doc/help.c									\
 		src/commands/sub.c								\
 		src/commands/and.c								\
 		src/commands/or.c								\
-		src/commands/ssing/disor.c								\
+		src/commands/ssing/disor.c						\
 		src/commands/ldi.c								\
 		src/commands/lldi.c								\
-		src/commands/lld.c								\
-		\
-		src/init/init_vm.c								\
-		src/init/parse_args.c							\
-		src/init/init_file_content.c					\
-		\
-		src/init/day_wta_handlinnerg/handle_champ.c			\
-		src/init/data_handling/handle_cycles.c			\
-		\
-		src/processing/add_champs_to_vm.c
+		src/commands/lld.c
 
 MAIN =	src/main.c
 
