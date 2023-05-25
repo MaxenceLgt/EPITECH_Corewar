@@ -49,7 +49,7 @@ INCLUDE =		lib/ml_headers/	\
 
 NAME	=	corewar
 
-CFLAGS = $(INCLUDE:%=-I%) -Wall -Wextra
+CFLAGS = $(INCLUDE:%=-I%) -Wall -Wextra -g
 
 OBJ	=	$(SRC:.c=.o)
 
