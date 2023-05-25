@@ -10,29 +10,6 @@
 #include <unistd.h>
 #include "corewar_header.h"
 
-static int handle_champ_flags(champ_t *champ, vm_t *vm, char **av, size_t *i)
-{
-    if (av[(*i)] == NULL)
-        return 0;
-    if (!ml_strcmp("-n", av[(*i)]) && av[(*i) + 1] != NULL) {
-        champ->prog_number = ml_atoi(av[(*i) + 1]);
-        (*i) += 2;
-        if (av[(*i)] == NULL)
-            return 0;
-        if (!ml_strcmp(av[(*i)], "-n") || !ml_strcmp(av[(*i)], "-a"))
-            return handle_champ_flags(champ, vm, av, i);
-    }
-    if (!ml_strcmp("-a", av[(*i)]) && av[(*i) + 1] != NULL) {
-        champ->load_address = ml_atoi(av[(*i) + 1]);
-        (*i) += 2;
-        if (av[(*i)] == NULL)
-            return 0;
-        if (!ml_strcmp(av[(*i)], "-n") || !ml_strcmp(av[(*i)], "-a"))
-            return handle_champ_flags(champ, vm, av, i);
-    }
-    return 0;
-}
-
 static int set_champ_in_list(champ_t *champ, vm_t *vm,
 UNUSED char **av, size_t *i)
 {
@@ -85,12 +62,12 @@ static int handle_champ_content(champ_t *champ, vm_t *vm, char **av, size_t *i)
     return init_process(champ, vm, av, i);
 }
 
-int handle_champ(vm_t *vm, char **av, size_t *i)
+static champ_t *create_champ(vm_t *vm)
 {
     champ_t *champ = malloc(sizeof(champ_t));
 
     if (champ == NULL)
-        return 1;
+        return NULL;
     vm->nb_champ++;
     champ->name = NULL;
     champ->prog_number = vm->nb_champ;
@@ -99,8 +76,21 @@ int handle_champ(vm_t *vm, char **av, size_t *i)
     champ->process = NULL;
     champ->is_alive = false;
     champ->prog_size = 0;
-    if (!ml_strcmp(av[(*i)], "-n") || !ml_strcmp(av[(*i)], "-a"))
-        handle_champ_flags(champ, vm, av, i);
+    return champ;
+}
+
+int handle_champ(vm_t *vm, char **av, size_t *i)
+{
+    champ_t *champ = create_champ(vm);
+
+    if (champ == NULL)
+        return 1;
+    if (!ml_strcmp(av[(*i)], "-n") || !ml_strcmp(av[(*i)], "-a")) {
+        if (handle_champ_flags(champ, vm, av, i)) {
+            free(champ);
+            return 1;
+        }
+    }
     if (av[(*i)] == NULL) {
         write(2, "No file: Refer to -h.\n", 22);
         free(champ);
