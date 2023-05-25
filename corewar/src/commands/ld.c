@@ -7,7 +7,7 @@
 
 #include "corewar_header.h"
 
-int command_ld(int par, vm_t *vm, process_t *process)
+int command_ld(UNUSED int par, UNUSED vm_t *vm, process_t *process)
 {
     process->carry = 1;
     return 0;

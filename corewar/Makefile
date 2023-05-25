@@ -25,7 +25,7 @@ SRC	=	src/doc/help.c									\
 		src/processing/process_corewar.c				\
 		src/processing/display_winner.c					\
 		\
-		src/proccommands/live.c							\
+		src/commands/live.c								\
 		src/commands/ld.c								\
 		src/commands/zjmp.c								\
 		src/commands/fork.c								\
@@ -37,7 +37,7 @@ SRC	=	src/doc/help.c									\
 		src/commands/sub.c								\
 		src/commands/and.c								\
 		src/commands/or.c								\
-		src/commands/ssing/disor.c						\
+		src/commands/xor.c						\
 		src/commands/ldi.c								\
 		src/commands/lldi.c								\
 		src/commands/lld.c

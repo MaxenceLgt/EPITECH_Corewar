@@ -7,7 +7,7 @@
 
 #include "corewar_header.h"
 
-int command_aff(int reg, vm_t *vm)
+int command_aff(UNUSED int reg, UNUSED vm_t *vm)
 {
     return 0;
 }
