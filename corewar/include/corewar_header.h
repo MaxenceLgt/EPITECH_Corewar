@@ -21,7 +21,7 @@
     typedef struct process_struct {
         int reg[REG_NUMBER];
         int pos;
-        int goal_cycle;
+        size_t goal_cycle;
         bool carry;
         int pc;
     } process_t;

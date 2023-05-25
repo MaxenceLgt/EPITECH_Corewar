@@ -7,7 +7,7 @@
 
 #include "corewar_header.h"
 
-static int exc_function(void)
+static int exc_function(vm_t *vm, champ_t *champ, process_t *process)
 {
     return 0;
 }
@@ -19,8 +19,8 @@ static int handle_champ_process(vm_t *vm, champ_t *champ)
 
     for (;node; node = node->next) {
         current_process = node->data;
-        if (vm->current_cycle = current_process->goal_cycle)
-            exc_funciton();
+        if (vm->current_cycle == current_process->goal_cycle)
+            exc_function(vm, champ, current_process);
     }
     return 0;
 }
