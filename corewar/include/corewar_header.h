@@ -23,6 +23,7 @@
         int pos;
         int goal_cycle;
         bool carry;
+        int pc;
     } process_t;
 
     typedef struct champs {
