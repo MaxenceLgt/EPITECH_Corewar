@@ -23,6 +23,7 @@
         int pos;
         int goal_cycle;
         bool carry;
+        int pc;
     } process_t;
 
     typedef struct champs {
@@ -39,6 +40,7 @@
     typedef struct virtual_machine {
         unsigned char *vm;
         size_t nbr_live;
+        size_t last_check;
         size_t cycle_to_die;
         size_t cycle_delta;
         size_t current_cycle;
@@ -51,6 +53,7 @@
 
     void change_endians(void *data, size_t size);
     void destroy_vm(vm_t *vm);
+    void destroy_champ(void *data);
 
     // DOC
 
@@ -62,15 +65,18 @@
     int parse_args(vm_t *vm, int ac, char **av);
     int handle_cycles(vm_t *vm, char **av, size_t *i);
     int handle_champ(vm_t *vm, char **av, size_t *i);
+    int handle_champ_flags(champ_t *champ, vm_t *vm, char **av, size_t *i);
     void init_file_content(vm_t *vm);
-
-    // PROCESSING
-
     int add_champs_to_vm(vm_t *vm);
+    int set_load_adress(vm_t *vm);
+    size_t get_load(ml_list *champ_lst);
+    bool only_one_load(ml_list *lst_champ);
 
     // COREWAR
 
     int process_corewar(UNUSED vm_t *vm);
+    int check_alive_state(UNUSED vm_t *vm);
+    int exec_prog(UNUSED vm_t *vm);
     void display_winner(vm_t *vm);
 
 #endif /* !COREWAR_HEADER_ */

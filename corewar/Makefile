@@ -14,14 +14,18 @@ SRC	=	src/doc/help.c									\
 		src/init/init_vm.c								\
 		src/init/parse_args.c							\
 		src/init/init_file_content.c					\
+		src/init/add_champs_to_vm.c						\
+		src/init/load_adress_verification.c				\
+		src/init/set_load_adress.c						\
 		\
 		src/init/data_handling/handle_champ.c			\
 		src/init/data_handling/handle_cycles.c			\
-		\
-		src/processing/add_champs_to_vm.c			\
+		src/init/data_handling/handle_champ_flags.c		\
 		\
 		src/processing/process_corewar.c				\
-		src/processing/display_winner.c
+		src/processing/display_winner.c					\
+		src/processing/check_alive_state.c				\
+		src/processing/exec_prog.c
 
 MAIN =	src/main.c
 
@@ -30,7 +34,7 @@ INCLUDE =		lib/ml_headers/	\
 
 NAME	=	corewar
 
-CFLAGS = $(INCLUDE:%=-I%) -Wall -Wextra
+CFLAGS = $(INCLUDE:%=-I%) -Wall -Wextra -g
 
 OBJ	=	$(SRC:.c=.o)
 
