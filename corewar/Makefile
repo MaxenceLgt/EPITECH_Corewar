@@ -10,6 +10,7 @@ SRC	=	src/doc/help.c									\
 		src/tools/op.c									\
 		src/tools/change_endians.c						\
 		src/tools/destroy_vm.c							\
+		src/tools/traduction.c							\
 		\
 		src/init/init_vm.c								\
 		src/init/parse_args.c							\
@@ -26,7 +27,24 @@ SRC	=	src/doc/help.c									\
 		src/processing/process_corewar.c				\
 		src/processing/display_winner.c					\
 		src/processing/check_alive_state.c				\
-		src/processing/exec_prog.c
+		src/processing/exec_prog.c					\
+		\
+		src/commands/live.c								\
+		src/commands/ld.c								\
+		src/commands/zjmp.c								\
+		src/commands/fork.c								\
+		src/commands/lfork.c							\
+		src/commands/aff.c								\
+		src/commands/st.c								\
+		src/commands/sti.c								\
+		src/commands/add.c								\
+		src/commands/sub.c								\
+		src/commands/and.c								\
+		src/commands/or.c								\
+		src/commands/xor.c						\
+		src/commands/ldi.c								\
+		src/commands/lldi.c								\
+		src/commands/lld.c
 
 MAIN =	src/main.c
 

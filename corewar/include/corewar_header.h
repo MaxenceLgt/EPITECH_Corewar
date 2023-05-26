@@ -16,7 +16,7 @@
     #include "defines_header.h"
     #include "op.h"
 
-    // STRUCTS
+    // STRUCT
 
     typedef struct process_struct {
         int reg[REG_NUMBER];
@@ -73,11 +73,34 @@
     bool only_one_load(ml_list *lst_champ);
     void sort_champion_lst(ml_list *champ_lst);
 
+    // COMMANDS
+
+    int command_live(vm_t *vm, champ_t *champ);
+    int command_ld(int reg, int arg, UNUSED vm_t *vm, process_t *process);
+    int command_zjmp(int index, process_t *process, UNUSED vm_t *vm);
+    int command_lfork(UNUSED int arg, UNUSED vm_t *vm);
+    int command_lfork(UNUSED int arg, UNUSED vm_t *vm);
+    int command_aff(int reg, UNUSED vm_t *vm, process_t *process, \
+champ_t *champ);
+    int command_add(process_t *process, UNUSED vm_t *vm, int *reg);
+    int command_and(UNUSED int arg, process_t *process, UNUSED vm_t *vm);
+    int command_ldi(int *index, int reg, process_t *process, UNUSED vm_t *vm);
+    int command_lld(int arg, int reg, process_t *process, UNUSED vm_t *vm);
+    int command_lldi(UNUSED int arg, process_t *process, UNUSED vm_t *vm);
+    int command_or(UNUSED int arg, process_t *process, UNUSED vm_t *vm);
+    int command_st(int reg, int arg, process_t *process, UNUSED vm_t *vm);
+    int command_sti(int *index, int reg, process_t *process, UNUSED vm_t *vm);
+    int command_sub(int *reg, process_t *process, UNUSED vm_t *vm);
+    int command_xor(UNUSED int arg, process_t *process, UNUSED vm_t *vm);
+
     // COREWAR
 
     int process_corewar(UNUSED vm_t *vm);
     int check_alive_state(vm_t *vm);
     int exec_prog(UNUSED vm_t *vm);
     void display_winner(vm_t *vm);
+
+    // TOOLS
+    int get_hexa(unsigned char buffer);
 
 #endif /* !COREWAR_HEADER_ */
