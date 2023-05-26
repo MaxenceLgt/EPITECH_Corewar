@@ -18,6 +18,7 @@ SRC	=	src/doc/help.c									\
 		src/init/add_champs_to_vm.c						\
 		src/init/load_adress_verification.c				\
 		src/init/set_load_adress.c						\
+		src/init/sort_champion_list.c					\
 		\
 		src/init/data_handling/handle_champ.c			\
 		src/init/data_handling/handle_cycles.c			\

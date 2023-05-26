@@ -11,7 +11,7 @@
 
 int ml_atoi(const char *str)
 {
-    ssize_t nb = 0;
+    int nb = 0;
 
     if (!str || str[0] == '\0')
         return (0);
@@ -23,7 +23,5 @@ int ml_atoi(const char *str)
         nb *= 10;
         nb += str[parse] - 48;
     }
-    if (nb > 2147483647)
-        return (0);
     return (nb);
 }
