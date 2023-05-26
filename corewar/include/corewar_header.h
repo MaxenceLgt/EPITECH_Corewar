@@ -71,6 +71,7 @@
     int set_load_adress(vm_t *vm);
     size_t get_load(ml_list *champ_lst);
     bool only_one_load(ml_list *lst_champ);
+    void sort_champion_lst(ml_list *champ_lst);
 
     // COREWAR
 
