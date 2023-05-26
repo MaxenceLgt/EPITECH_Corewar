@@ -99,6 +99,7 @@ champ_t *champ);
     int check_alive_state(vm_t *vm);
     int exec_prog(UNUSED vm_t *vm);
     void display_winner(vm_t *vm);
+    int *get_params_type(process_t *process, unsigned char *vm);
 
     // TOOLS
     int get_hexa(unsigned char buffer);

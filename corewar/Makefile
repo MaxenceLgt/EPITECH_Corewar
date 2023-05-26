@@ -27,7 +27,8 @@ SRC	=	src/doc/help.c									\
 		src/processing/process_corewar.c				\
 		src/processing/display_winner.c					\
 		src/processing/check_alive_state.c				\
-		src/processing/exec_prog.c					\
+		src/processing/exec_prog.c						\
+		src/processing/get_params_type.c				\
 		\
 		src/commands/live.c								\
 		src/commands/ld.c								\
@@ -41,7 +42,7 @@ SRC	=	src/doc/help.c									\
 		src/commands/sub.c								\
 		src/commands/and.c								\
 		src/commands/or.c								\
-		src/commands/xor.c						\
+		src/commands/xor.c								\
 		src/commands/ldi.c								\
 		src/commands/lldi.c								\
 		src/commands/lld.c
