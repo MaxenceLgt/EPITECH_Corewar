@@ -76,7 +76,7 @@
     // COREWAR
 
     int process_corewar(UNUSED vm_t *vm);
-    int check_alive_state(UNUSED vm_t *vm);
+    int check_alive_state(vm_t *vm);
     int exec_prog(UNUSED vm_t *vm);
     void display_winner(vm_t *vm);
 
