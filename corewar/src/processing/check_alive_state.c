@@ -30,15 +30,14 @@ static void check_die_champs(ml_node *champ, vm_t *vm)
 int check_alive_state(vm_t *vm)
 {
     ml_node *champ = vm->champs_data->head;
-    champ_t *info = NULL;
 
     if (vm->nbr_live == NBR_LIVE) {
         vm->cycle_to_die -= CYCLE_DELTA;
         vm->nbr_live = 0;
     }
-    if (vm->last_check + CYCLE_TO_DIE != vm->current_cycle)
+    if (vm->last_check + vm->cycle_to_die != vm->current_cycle)
         return (0);
-    vm->last_check += CYCLE_TO_DIE;
+    vm->last_check += vm->cycle_to_die;
     check_die_champs(champ, vm);
     return (0);
 }
