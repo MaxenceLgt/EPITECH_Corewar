@@ -16,7 +16,7 @@ static void destroy_process(void *data)
         free(process);
 }
 
-static void destroy_champ(void *data)
+void destroy_champ(void *data)
 {
     champ_t *champ = data;
 

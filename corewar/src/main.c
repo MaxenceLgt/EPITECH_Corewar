@@ -20,6 +20,7 @@ int main(int ac, char **av)
         destroy_vm(vm);
         return (84);
     }
+    sort_champion_lst(vm->champs_data);
     process_corewar(vm);
     destroy_vm(vm);
     return 0;

@@ -18,10 +18,8 @@ static int handle_parameter(vm_t *vm, char **av, size_t *i)
 int parse_args(vm_t *vm, int ac, char **av)
 {
     for (size_t i = 1; (int)i < ac;) {
-        if (handle_parameter(vm, av, &i)) {
-            write(2, "Invalid parameter.\n", 19);
+        if (handle_parameter(vm, av, &i))
             return 84;
-        }
     }
     return 0;
 }

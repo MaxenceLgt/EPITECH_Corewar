@@ -19,7 +19,8 @@ int calcul_n_pc(int v, int pc)
     return -1;
 }
 
-int command_fork(UNUSED int arg, vm_t *vm, champ_t *champ, process_t *process)
+int command_fork(UNUSED int arg, UNUSED vm_t *vm,
+champ_t *champ, process_t *process)
 {
     int n_pc;
     int v;

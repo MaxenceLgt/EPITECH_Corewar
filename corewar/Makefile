@@ -18,12 +18,16 @@ SRC	=	src/doc/help.c									\
 		src/init/add_champs_to_vm.c						\
 		src/init/load_adress_verification.c				\
 		src/init/set_load_adress.c						\
+		src/init/sort_champion_list.c					\
 		\
 		src/init/data_handling/handle_champ.c			\
 		src/init/data_handling/handle_cycles.c			\
+		src/init/data_handling/handle_champ_flags.c		\
 		\
 		src/processing/process_corewar.c				\
 		src/processing/display_winner.c					\
+		src/processing/check_alive_state.c				\
+		src/processing/exec_prog.c					\
 		\
 		src/commands/live.c								\
 		src/commands/ld.c								\
