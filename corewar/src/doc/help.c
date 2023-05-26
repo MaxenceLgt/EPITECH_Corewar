@@ -9,13 +9,12 @@
 
 #include "corewar_header.h"
 
-void manage_help(int ac, char **av)
+int manage_help(int ac, char **av)
 {
     if (ac == 2 && ml_strcmp(av[1], "-h") == 0) {
         ml_printf("USAGE\n");
         ml_printf("./corewar [-dump nbr_cycle] [[-n prog_number] ");
-        ml_printf("[-a load_address] prog_name] ...\n");
-        ml_printf("DESCRIPTION\n");
+        ml_printf("[-a load_address] prog_name] ...\nDESCRIPTION\n");
         ml_printf("-dump nbr_cycle dumps the memory after ");
         ml_printf("the nbr_cycle execution (if the round is not");
         ml_printf("already over) with the following format: 32 bytes/line");
@@ -29,5 +28,7 @@ void manage_help(int ac, char **av)
         ml_printf("the processes are as far");
         ml_printf("away from each other as possible. ");
         ml_printf("The addresses are MEM_SIZE modulo.\n");
+        return 1;
     }
+    return 0;
 }

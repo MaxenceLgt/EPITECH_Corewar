@@ -170,4 +170,13 @@
     */
     void ml_revstr(char **str);
 
+    /**
+     * @brief ml_str_is_num function verify if a string is only
+     * composed of alpha characters.
+     *
+     * @param str: String to be verified.
+     * @return true if str is only composed of alpha char false else.
+    */
+    int ml_str_is_num(char *str);
+
 #endif /* !ml_STR_H_ */
