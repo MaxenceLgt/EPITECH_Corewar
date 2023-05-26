@@ -26,7 +26,8 @@ SRC	=	src/doc/help.c									\
 		src/processing/process_corewar.c				\
 		src/processing/display_winner.c					\
 		src/processing/check_alive_state.c				\
-		src/processing/exec_prog.c
+		src/processing/exec_prog.c						\
+		src/processing/get_params_type.c
 
 MAIN =	src/main.c
 
