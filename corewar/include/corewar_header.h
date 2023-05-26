@@ -49,6 +49,13 @@
         ml_list *champs_data;
     } vm_t;
 
+    typedef struct commands {
+        int id;
+        int cycles;
+        int nb_args;
+        int (*command)(vm_t *, champ_t *, process_t *, int *);
+    } cmd_t;
+
     // ROOT
 
     void change_endians(void *data, size_t size);
@@ -79,5 +86,26 @@
     int check_alive_state(vm_t *vm);
     int exec_prog(UNUSED vm_t *vm);
     void display_winner(vm_t *vm);
+
+    // COMMAND STRUCT
+
+    static const cmd_t cmds[] = {
+        {1, 10, 1, NULL},
+        {2, 5, 2, NULL},
+        {3, 5, 2, NULL},
+        {4, 10, 3, NULL},
+        {5, 10, 3, NULL},
+        {6, 6, 3, NULL},
+        {7, 6, 3, NULL},
+        {8, 6, 3, NULL},
+        {9, 20, 1, NULL},
+        {10, 25, 3, NULL},
+        {11, 25, 3, NULL},
+        {12, 800, 1, NULL},
+        {13, 10, 2, NULL},
+        {14, 50, 3, NULL},
+        {15, 1000, 1, NULL},
+        {16, 2, 1, NULL},
+    };
 
 #endif /* !COREWAR_HEADER_ */
