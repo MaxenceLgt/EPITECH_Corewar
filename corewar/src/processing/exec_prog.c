@@ -5,13 +5,16 @@
 ** exec_prog
 */
 
+#include <stdio.h>
 #include "corewar_header.h"
+#include <stdlib.h>
 
 static int exc_function(UNUSED vm_t *vm, UNUSED champ_t *champ,
 UNUSED process_t *process)
 {
-    UNUSED int *args;
+    int *args = get_params_type(process, vm->vm);
 
+    free(args);
     return 0;
 }
 
