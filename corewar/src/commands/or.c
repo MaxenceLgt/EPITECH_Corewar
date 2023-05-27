@@ -7,7 +7,8 @@
 
 #include "corewar_header.h"
 
-int exec_or(vm_t *vm, champ_t *champ, process_t *process, int *args)
+int exec_or(UNUSED vm_t *vm, UNUSED champ_t *champ,
+UNUSED process_t *process, UNUSED int *args)
 {
     return 0;
 }
