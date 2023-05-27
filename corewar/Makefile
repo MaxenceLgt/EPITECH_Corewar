@@ -30,6 +30,7 @@ SRC	=	src/doc/help.c									\
 		src/processing/check_alive_state.c				\
 		src/processing/exec_prog.c						\
 		src/processing/get_params_type.c				\
+		src/processing/init_goal_cycle.c					\
 		\
 		src/commands/live.c								\
 		src/commands/ld.c								\
