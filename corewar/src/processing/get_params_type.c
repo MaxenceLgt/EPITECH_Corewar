@@ -11,8 +11,8 @@
 
 static void set_pc_to_zjmp(process_t *process, unsigned char *vm)
 {
-    char pos_param[2] = "";
-    short result = 0;
+    char pos_param[2] = "\0";
+    int result = 0;
 
     for (size_t i = 1; i <= 2; i++) {
         if (process->pos + i > MEM_SIZE)
@@ -27,18 +27,20 @@ static void set_pc_to_zjmp(process_t *process, unsigned char *vm)
 static void set_pc(int *params, process_t *process, char function,
 unsigned char *vm)
 {
-    size_t val = process->pc;
-    if (function == 9) {
-        set_pc_to_zjmp(process, vm);
-    }
+    int val = 0;
+
+    if (function == 9)
+        return (set_pc_to_zjmp(process, vm));
     for (size_t i = 0; i < 3; i++)
         if (params[i] != -1)
             val += params[i];
     if (val > MEM_SIZE) {
-        process->pc = val - MEM_SIZE;
+        process->pc = val - MEM_SIZE - 1;
         return;
     }
-    process->pc += val;
+    process->pc += val + 1;
+    if (!NO_CODING(vm[process->pos]))
+        process->pc++;
 }
 
 static int *handle_no_coding(char function, process_t *process,
@@ -65,7 +67,7 @@ unsigned char *vm)
 
     if (!params)
         return (NULL);
-    for (size_t i = 0, parser = 0; i < 3; i += 2, parser++) {
+    for (size_t i = 0, parser = 0; parser < 3; i += 2, parser++) {
         if (test[i] == '1' && test[i + 1] == '1')
             params[parser] = T_IND;
         if (test[i] == '1' && test[i + 1] == '0')
@@ -86,7 +88,7 @@ int *get_params_type(process_t *process, unsigned char *vm)
 
     if (NO_CODING(vm[process->pos]))
         return (handle_no_coding(vm[process->pos], process, vm));
-    if (process->pos + 2 <= MEM_SIZE)
+    if (process->pos + 1 <= MEM_SIZE)
         coding_byte = vm[process->pos + 1];
     else
         coding_byte = vm[process->pos - MEM_SIZE + 1];

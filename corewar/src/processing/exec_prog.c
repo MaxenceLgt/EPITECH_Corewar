@@ -26,10 +26,11 @@ static int handle_champ_process(vm_t *vm, champ_t *champ)
     ml_node *node = champ->process->head;
     process_t *current_process = NULL;
 
-    for (;node; node = node->next) {
+    for (; node; node = node->next) {
         current_process = node->data;
         if (vm->current_cycle == current_process->goal_cycle) {
             exc_function(vm, champ, current_process);
+            move_to_pc(vm, current_process);
         }
     }
     return 0;
