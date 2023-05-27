@@ -102,6 +102,7 @@ champ_t *champ);
     void display_winner(vm_t *vm);
     int *get_params_type(process_t *process, unsigned char *vm);
     void init_goal_cycle(vm_t *vm, ml_list *champ_lst);
+    void move_to_pc(vm_t *vm, process_t *process);
 
     // TOOLS
     int get_hexa(unsigned char buffer);

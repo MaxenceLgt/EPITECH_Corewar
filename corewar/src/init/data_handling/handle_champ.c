@@ -32,6 +32,7 @@ static int init_process(champ_t *champ, vm_t *vm, char **av, size_t *i)
     process->carry = true;
     process->goal_cycle = 0;
     process->pos = champ->load_address;
+    process->pc = process->pos;
     for (size_t reg_i = 0; reg_i < REG_NUMBER; reg_i++)
         process->reg[reg_i] = 0;
     champ->process = ml_create_list();

@@ -11,10 +11,14 @@ void load_process(champ_t *champ, size_t pos)
 {
     process_t *process = NULL;
 
-    while (pos >= MEM_SIZE)
+    while (pos > MEM_SIZE) {
         pos -= MEM_SIZE;
+        if (pos < MEM_SIZE)
+            pos--;
+    }
     process = champ->process->head->data;
     process->pos = pos;
+    process->pc = pos;
 }
 
 static void load_champ(champ_t *champ, size_t start, unsigned char **vm)
