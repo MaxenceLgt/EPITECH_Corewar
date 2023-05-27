@@ -7,7 +7,7 @@
 
 #include "corewar_header.h"
 
-static void load_goal_cycle(ml_node *process_lst, unsigned char *vm)
+void load_goal_cycle(ml_node *process_lst, unsigned char *vm)
 {
     process_t *process = process_lst->data;
 

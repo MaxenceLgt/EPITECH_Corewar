@@ -7,10 +7,21 @@
 
 #include "corewar_header.h"
 
+void load_process(champ_t *champ, size_t pos)
+{
+    process_t *process = NULL;
+
+    while (pos >= MEM_SIZE)
+        pos -= MEM_SIZE;
+    process = champ->process->head->data;
+    process->pos = pos;
+}
+
 static void load_champ(champ_t *champ, size_t start, unsigned char **vm)
 {
     size_t parser = 0;
 
+    load_process(champ, start);
     for (size_t i = start; i < MEM_SIZE && parser != champ->prog_size; i++,
     parser++, start++)
         (*vm)[i] = champ->champ_content[parser];
