@@ -112,23 +112,6 @@
 
     // COMMAND STRUCT
 
-    static const cmd_t cmds[] = {
-        {1, 10, 1, NULL},
-        {2, 5, 2, NULL},
-        {3, 5, 2, NULL},
-        {4, 10, 3, NULL},
-        {5, 10, 3, NULL},
-        {6, 6, 3, NULL},
-        {7, 6, 3, NULL},
-        {8, 6, 3, NULL},
-        {9, 20, 1, NULL},
-        {10, 25, 3, NULL},
-        {11, 25, 3, NULL},
-        {12, 800, 1, NULL},
-        {13, 10, 2, NULL},
-        {14, 50, 3, NULL},
-        {15, 1000, 1, NULL},
-        {16, 2, 1, NULL},
-    };
+    extern cmd_t cmds_data[];
 
 #endif /* !COREWAR_HEADER_ */
