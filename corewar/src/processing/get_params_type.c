@@ -5,13 +5,66 @@
 ** get_params_type
 */
 
+#include <stdio.h>
 #include <stdlib.h>
 #include "corewar_header.h"
 
-static int *set_params_tab(char *test)
+static void set_pc_to_zjmp(process_t *process, unsigned char *vm)
+{
+    char pos_param[2] = "";
+    short result = 0;
+
+    for (size_t i = 1; i <= 2; i++) {
+        if (process->pos + i > MEM_SIZE)
+            pos_param[i - 1] = vm[(process->pos + i) - MEM_SIZE - 1];
+        else
+            pos_param[i - 1] = vm[process->pos + i];
+    }
+    result = (pos_param[0] << 8) | pos_param[1];
+    process->pc += result;
+}
+
+static void set_pc(int *params, process_t *process, char function,
+unsigned char *vm)
+{
+    size_t val = process->pc;
+    if (function == 9) {
+        set_pc_to_zjmp(process, vm);
+    }
+    for (size_t i = 0; i < 3; i++)
+        if (params[i] != -1)
+            val += params[i];
+    if (val > MEM_SIZE) {
+        process->pc = val - MEM_SIZE;
+        return;
+    }
+    process->pc += val;
+}
+
+static int *handle_no_coding(char function, process_t *process,
+unsigned char *vm)
 {
     int *params = malloc(sizeof(int) * 3);
 
+    if (!params)
+        return (NULL);
+    for (size_t i = 0; i < 3; i++)
+        params[i] = -1;
+    if (function == 1)
+        params[0] = T_DIR;
+    if (function == 9 || function == 12 || function == 15)
+        params[0] = T_IND;
+    set_pc(params, process, function, vm);
+    return (params);
+}
+
+static int *set_params_tab(char *test, process_t *process, char function,
+unsigned char *vm)
+{
+    int *params = malloc(sizeof(int) * 3);
+
+    if (!params)
+        return (NULL);
     for (size_t i = 0, parser = 0; i < 3; i += 2, parser++) {
         if (test[i] == '1' && test[i + 1] == '1')
             params[parser] = T_IND;
@@ -22,6 +75,7 @@ static int *set_params_tab(char *test)
         if (test[i] == '0' && test[i + 1] == '0')
             params[parser] = -1;
     }
+    set_pc(params, process, function, vm);
     return (params);
 }
 
@@ -30,6 +84,8 @@ int *get_params_type(process_t *process, unsigned char *vm)
     char coding_byte = 0;
     char val[] = "00000000";
 
+    if (NO_CODING(vm[process->pos]))
+        return (handle_no_coding(vm[process->pos], process, vm));
     if (process->pos + 2 <= MEM_SIZE)
         coding_byte = vm[process->pos + 1];
     else
@@ -43,5 +99,5 @@ int *get_params_type(process_t *process, unsigned char *vm)
         else
             val[i] = '0';
     }
-    return (set_params_tab(val));
+    return (set_params_tab(val, process, vm[process->pos], vm));
 }

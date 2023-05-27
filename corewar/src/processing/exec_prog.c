@@ -9,8 +9,7 @@
 #include "corewar_header.h"
 #include <stdlib.h>
 
-static int exc_function(UNUSED vm_t *vm, UNUSED champ_t *champ,
-UNUSED process_t *process)
+static int exc_function(vm_t *vm, UNUSED champ_t *champ, process_t *process)
 {
     int *args = get_params_type(process, vm->vm);
 
@@ -32,7 +31,7 @@ static int handle_champ_process(vm_t *vm, champ_t *champ)
     return 0;
 }
 
-int exec_prog(UNUSED vm_t *vm)
+int exec_prog(vm_t *vm)
 {
     ml_node *node = vm->champs_data->head;
     champ_t *champ = NULL;
