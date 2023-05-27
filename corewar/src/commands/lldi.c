@@ -7,8 +7,7 @@
 
 #include "corewar_header.h"
 
-int command_lldi(UNUSED int arg, process_t *process, UNUSED vm_t *vm)
+int exec_lldi(vm_t *vm, champ_t *champ, process_t *process, int *args)
 {
-    process->carry = 1;
     return 0;
 }
