@@ -11,6 +11,7 @@ SRC	=	src/doc/help.c									\
 		src/tools/change_endians.c						\
 		src/tools/destroy_vm.c							\
 		src/tools/traduction.c							\
+		src/tools/cmds_data.c							\
 		\
 		src/init/init_vm.c								\
 		src/init/parse_args.c							\

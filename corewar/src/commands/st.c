@@ -7,9 +7,7 @@
 
 #include "corewar_header.h"
 
-int command_st(int reg, int arg, process_t *process, UNUSED vm_t *vm)
+int exec_st(vm_t *vm, champ_t *champ, process_t *process, int *args)
 {
-    if (arg == T_REG)
-        process->pos = process->pc + (process->reg[reg] % IDX_MOD);
     return 0;
 }

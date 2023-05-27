@@ -7,9 +7,8 @@
 
 #include "corewar_header.h"
 
-int command_live(vm_t *vm, champ_t *champ)
+int exec_live(vm_t *vm, champ_t *champ, process_t *process, int *args)
 {
-    ml_printf("The player %d is alive.\n", champ->prog_number);
     champ->is_alive = true;
     vm->nbr_live++;
     return 0;
