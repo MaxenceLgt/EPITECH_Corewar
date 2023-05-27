@@ -34,6 +34,7 @@ static int init_process(champ_t *champ, vm_t *vm, char **av, size_t *i)
     process->pos = champ->load_address;
     for (size_t reg_i = 0; reg_i < REG_NUMBER; reg_i++)
         process->reg[reg_i] = 0;
+    process->reg[0] = champ->prog_number;
     champ->process = ml_create_list();
     if (champ->process == NULL)
         return 1;

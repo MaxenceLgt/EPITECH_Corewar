@@ -7,7 +7,7 @@
 
 #include "corewar_header.h"
 
-cmd_t cmds[] = {
+cmd_t cmds_data[] = {
     {1, 10, 1, exec_live},
     {2, 5, 2, exec_ld},
     {3, 5, 2, exec_st},
