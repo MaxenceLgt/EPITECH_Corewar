@@ -16,12 +16,13 @@ static int check_vm_run(vm_t *vm)
     return 1;
 }
 
-int process_corewar(UNUSED vm_t *vm)
+int process_corewar(vm_t *vm)
 {
+    init_goal_cycle(vm, vm->champs_data);
     while (check_vm_run(vm)) {
+        vm->current_cycle++;
         exec_prog(vm);
         check_alive_state(vm);
-        vm->current_cycle++;
     }
     display_winner(vm);
     return 0;

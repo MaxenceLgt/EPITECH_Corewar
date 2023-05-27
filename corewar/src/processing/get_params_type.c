@@ -8,10 +8,27 @@
 #include <stdlib.h>
 #include "corewar_header.h"
 
+static int *handle_no_coding(char function)
+{
+    int *params = malloc(sizeof(int) * 3);
+
+    if (!params)
+        return (NULL);
+    for (size_t i = 0; i < 3; i++)
+        params[i] = -1;
+    if (function == 1)
+        params[0] = T_DIR;
+    if (function == 9 || function == 12 || function == 15)
+        params[0] = T_IND;
+    return (params);
+}
+
 static int *set_params_tab(char *test)
 {
     int *params = malloc(sizeof(int) * 3);
 
+    if (!params)
+        return (NULL);
     for (size_t i = 0, parser = 0; i < 3; i += 2, parser++) {
         if (test[i] == '1' && test[i + 1] == '1')
             params[parser] = T_IND;
@@ -30,6 +47,8 @@ int *get_params_type(process_t *process, unsigned char *vm)
     char coding_byte = 0;
     char val[] = "00000000";
 
+    if (NO_CODING(vm[process->pos]))
+        return (handle_no_coding(vm[process->pos]));
     if (process->pos + 2 <= MEM_SIZE)
         coding_byte = vm[process->pos + 1];
     else

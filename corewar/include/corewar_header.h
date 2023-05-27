@@ -100,6 +100,7 @@ champ_t *champ);
     int exec_prog(UNUSED vm_t *vm);
     void display_winner(vm_t *vm);
     int *get_params_type(process_t *process, unsigned char *vm);
+    void init_goal_cycle(vm_t *vm, ml_list *champ_lst);
 
     // TOOLS
     int get_hexa(unsigned char buffer);
