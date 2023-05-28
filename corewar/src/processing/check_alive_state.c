@@ -37,9 +37,9 @@ int check_alive_state(vm_t *vm)
         vm->cycle_to_die -= CYCLE_DELTA;
         vm->nbr_live = 0;
     }
-    if (vm->last_check + vm->cycle_to_die != vm->current_cycle)
+    if (vm->last_check + vm->cycle_to_die > vm->current_cycle)
         return (0);
-    vm->last_check += vm->cycle_to_die;
+    vm->last_check = vm->current_cycle;
     check_die_champs(champ, vm);
     return (0);
 }
