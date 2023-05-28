@@ -7,8 +7,7 @@
 
 #include "corewar_header.h"
 
-int exec_lfork(UNUSED vm_t *vm, UNUSED champ_t *champ,
-UNUSED process_t *process, UNUSED int *args)
+int exec_lfork(vm_t *vm, champ_t *champ, process_t *process, UNUSED int *args)
 {
     int start = process->pos + 1;
     short temp = 0;

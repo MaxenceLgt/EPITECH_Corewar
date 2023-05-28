@@ -20,7 +20,7 @@ static size_t load_gc(int pos, vm_t *vm)
     return 0;
 }
 
-int load_new_process(UNUSED vm_t *vm, champ_t *champ, int *params)
+int load_new_process(vm_t *vm, champ_t *champ, int *params)
 {
     process_t *new_process = malloc(sizeof(process_t));
 
@@ -37,8 +37,7 @@ int load_new_process(UNUSED vm_t *vm, champ_t *champ, int *params)
     return 0;
 }
 
-int exec_fork(UNUSED vm_t *vm, UNUSED champ_t *champ,
-UNUSED process_t *process, UNUSED int *args)
+int exec_fork(vm_t *vm, champ_t *champ, process_t *process, UNUSED int *args)
 {
     int start = process->pos + 1;
     short temp = 0;
