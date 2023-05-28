@@ -15,6 +15,7 @@ static int set_equivalent(vm_t *vm)
 
     for (size_t i = 0; temp; temp = temp->next, i += offset) {
         champ = temp->data;
+        load_process(champ, i);
         for (size_t pos = 0; pos < champ->prog_size; pos++)
             vm->vm[i + pos] = champ->champ_content[pos];
     }

@@ -7,8 +7,8 @@
 
 #include "corewar_header.h"
 
-int command_or(UNUSED int arg, process_t *process, UNUSED vm_t *vm)
+int exec_or(UNUSED vm_t *vm, UNUSED champ_t *champ,
+UNUSED process_t *process, UNUSED int *args)
 {
-    process->carry = 1;
     return 0;
 }
