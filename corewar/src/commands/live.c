@@ -23,8 +23,8 @@ static bool id_is_champ(champ_t *champ, ml_node *process, int value)
     return (false);
 }
 
-int exec_live(vm_t *vm, champ_t *champ, UNUSED process_t *process, UNUSED
-int *args)
+int exec_live(vm_t *vm, UNUSED champ_t *champ, UNUSED process_t *process,
+UNUSED int *args)
 {
     int start = process->pos + 1;
     int value = get_int_param(vm->vm, start);

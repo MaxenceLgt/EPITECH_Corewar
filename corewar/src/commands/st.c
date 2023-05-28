@@ -10,9 +10,11 @@
 static int manage_indirect_arg(vm_t *vm, process_t *process, int reg_idx)
 {
     short val = get_short_param(vm->vm, process->pos + 2);
-    int pos = process->pc + val % IDX_MOD;
+    int pos = process->pos + val % IDX_MOD;
 
-    vm->vm[IS_OUT(pos)] = process->reg[reg_idx];
+    if (pos > MEM_SIZE)
+        pos = pos % MEM_SIZE - 1;
+    set_int_to_char(process->reg[reg_idx], vm, pos);
     return (0);
 }
 
