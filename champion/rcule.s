@@ -1,41 +1,28 @@
 	.name "Rcule"
 	.comment "Cmoa le plu phor"
 
-	sti r1, %:live, %1
-	and r1, %0, r1
-	fork %:init_forward
-
-	live:	live %1
-			zjmp %:live
-			fork %:attack
-
+	ld %2, r4
 
 	loader:
-			ld		0,		r2
-			ld		0 	,			r5
-			ld		%318992387,		r3
-			ld		%0,				r4
-			ld      1, 			r6
-			ld      1, 			r7
-	init_forward:
-			live	%42
-			fork	%:loader
-			live	%42
-			fork	%:attack
-			live	%42
+		live %0
+	    add r4, r4, r4
+	    xor r4, %128, r7
+	    zjmp %:attacker
+	    fork %:attack_load
+	    live %0
+	    ld %0, r12
+	    zjmp %:loader
 
-	direction:
-		add  r6, r7, r6
-		zjmp %:init_forward
+	attack_load:
+	    add r3, r4, r3
+	    ld %0, r12
+	    zjmp %:loader
 
-	attack:
-		st		r2,				r6
-		st		r3,				-1
-		live	%1337
-		zjmp %:direction
+	attacker:
+	    st r1, 12
+	    ldi %0, r3, r14
 
-
-
-
-
-
+	jumper:
+	    live %0
+	    sti r14, %-700, r3
+	    zjmp %-700
