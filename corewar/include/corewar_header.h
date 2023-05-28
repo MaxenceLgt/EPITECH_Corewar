@@ -12,6 +12,7 @@
 
     #include <stdbool.h>
     #include <sys/types.h>
+    #include <stdio.h>
     #include "ml_lib_head.h"
     #include "defines_header.h"
     #include "op.h"
@@ -61,6 +62,10 @@
     void change_endians(void *data, size_t size);
     void destroy_vm(vm_t *vm);
     void destroy_champ(void *data);
+    short get_short_param(unsigned char *vm, int start);
+    int get_int_param(unsigned char *vm, int start);
+    void set_int_to_char(int num, vm_t *vm, int pos);
+    void set_short_to_char(short num, vm_t *vm, int pos);
 
     // DOC
 
@@ -111,7 +116,10 @@
     void move_to_pc(vm_t *vm, process_t *process);
 
     // TOOLS
+
     int get_hexa(unsigned char buffer);
+    int load_new_process(UNUSED vm_t *vm, champ_t *champ, int *params);
+    int set_ld_reg_values(vm_t *vm, process_t *process, int *params);
 
     // COMMAND STRUCT
 
