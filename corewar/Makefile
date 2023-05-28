@@ -12,6 +12,7 @@ SRC	=	src/doc/help.c									\
 		src/tools/destroy_vm.c							\
 		src/tools/traduction.c							\
 		src/tools/cmds_data.c							\
+		src/tools/get_values.c							\
 		\
 		src/init/init_vm.c								\
 		src/init/parse_args.c							\
