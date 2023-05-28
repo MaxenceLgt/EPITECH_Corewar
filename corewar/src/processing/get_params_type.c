@@ -31,12 +31,14 @@ unsigned char *vm)
 
     if (function == 9)
         return (set_pc_to_zjmp(process, vm));
-    for (size_t i = 0; i < 3; i++)
-        if (params[i] != -1)
-            val += params[i];
-    if (val > MEM_SIZE) {
-        process->pc = val - MEM_SIZE - 1;
-        return;
+    for (size_t i = 0; i < 3; i++) {
+        if (params[i] == T_DIR && !IS_INDEX(vm[process->pos]))
+            val += 4;
+        if (params[i] == T_IND || ((params[i] == T_DIR ||
+        params[i] == T_IND) && IS_INDEX(vm[process->pos])))
+            val += 2;
+        if (params[i] == T_REG)
+            val += 1;
     }
     process->pc += val + 1;
     if (!NO_CODING(vm[process->pos]))
@@ -53,9 +55,9 @@ unsigned char *vm)
     for (size_t i = 0; i < 3; i++)
         params[i] = -1;
     if (function == 1)
-        params[0] = DIR_SIZE;
+        params[0] = T_DIR;
     if (function == 9 || function == 12 || function == 15)
-        params[0] = IND_SIZE;
+        params[0] = T_IND;
     set_pc(params, process, function, vm);
     return (params);
 }
@@ -69,16 +71,13 @@ unsigned char *vm)
         return (NULL);
     for (size_t i = 0, parser = 0; parser < 3; i += 2, parser++) {
         if (test[i] == '1' && test[i + 1] == '1')
-            params[parser] = IND_SIZE;
+            params[parser] = T_IND;
         if (test[i] == '1' && test[i + 1] == '0')
-            params[parser] = DIR_SIZE;
+            params[parser] = T_DIR;
         if (test[i] == '0' && test[i + 1] == '1')
-            params[parser] = 1;
+            params[parser] = T_REG;
         if (test[i] == '0' && test[i + 1] == '0')
             params[parser] = -1;
-        if (((test[i] == '1' && test[i + 1] == '0') ||
-        (test[i] == '1' && test[i + 1] == '1')) && IS_INDEX(function))
-            params[parser] = IND_SIZE;
     }
     set_pc(params, process, function, vm);
     return (params);
