@@ -12,5 +12,7 @@
     #define NO_CODING(c) (c == 1 || c == 9 || c == 12 || c == 15)
     #define IS_INDEX(c) (c == 9 || c == 10 || c == 11 || c == 12 || c == 14 || \
 c == 15)
+    #define IS_OUT(c) c > MEM_SIZE ? c = c - MEM_SIZE - 1 : c
+    #define REGISTER process->reg
 
 #endif /* !DEFINES_H */
