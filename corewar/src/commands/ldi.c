@@ -7,7 +7,7 @@
 
 #include "corewar_header.h"
 
-static int set_ld_to_reg(vm_t *vm, process_t *process, int *params)
+static int set_ld_to_reg(UNUSED vm_t *vm, process_t *process, int *params)
 {
     int ind_size = process->pos + (params[0] + params[1]) % IDX_MOD;
 
