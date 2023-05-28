@@ -24,13 +24,13 @@ int exec_xor(vm_t *vm, UNUSED champ_t *champ, process_t *process, int *args)
     int params[3] = {0, 0, 0};
 
     for (size_t i = 0; i < 2; i++) {
-        if (args[i] == 1) {
+        if (args[i] == T_REG) {
             params[i] = process->reg[vm->vm[IS_OUT(start)] - 1];
             start++;
-        } if (args[i] == DIR_SIZE) {
+        } if (args[i] == T_DIR) {
             params[i] = get_int_param(vm->vm, start);
             start += 4;
-        } if (args[i] == IND_SIZE) {
+        } if (args[i] == T_IND) {
             temp = process->pos + get_short_param(vm->vm, start) % IDX_MOD;
             params[i] = vm->vm[IS_OUT(temp)];
             start += 2;

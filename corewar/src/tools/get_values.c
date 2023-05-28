@@ -43,8 +43,10 @@ void set_int_to_char(int num, vm_t *vm, int pos)
 {
     int out = 0;
     int temp = 0;
-    char* ptr = (char*)&num;
+    char* ptr = NULL;
 
+    change_endians(&num, sizeof(int));
+    ptr = (char*)&num;
     for (int i = 0; i < 4; i++) {
         temp = pos + i;
         out = IS_OUT(temp);
@@ -58,6 +60,8 @@ void set_short_to_char(short num, vm_t *vm, int pos)
     int temp = 0;
     char* ptr = (char*)&num;
 
+    change_endians(&num, sizeof(short));
+    ptr = (char*)&num;
     for (int i = 0; i < 2; i++) {
         temp = pos + i;
         out = IS_OUT(temp);
