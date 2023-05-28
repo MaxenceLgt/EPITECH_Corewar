@@ -10,9 +10,10 @@
 static void set_value_sti(vm_t *vm, process_t *process, int *params)
 {
     int pos = process->pos + (params[1] + params[2]) % IDX_MOD;
-    int value = get_int_param(vm->vm, pos);
 
-    process->reg[params[0]] = value;
+    if (pos > MEM_SIZE)
+        pos = pos % MEM_SIZE - 1;
+    set_int_to_char(process->reg[params[0]], vm, pos);
 }
 
 int exec_sti(vm_t *vm, UNUSED champ_t *champ, process_t *process, int *args)
