@@ -113,7 +113,9 @@
     void move_to_pc(vm_t *vm, process_t *process);
 
     // TOOLS
+
     int get_hexa(unsigned char buffer);
+    int load_new_process(UNUSED vm_t *vm, champ_t *champ, int *params);
 
     // COMMAND STRUCT
 
