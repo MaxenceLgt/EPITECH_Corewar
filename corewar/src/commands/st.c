@@ -11,7 +11,6 @@ static int manage_indirect_arg(vm_t *vm, process_t *process, int reg_idx)
 {
     short val = get_short_param(vm->vm, process->pos + 2);
     int pos = process->pos + val % IDX_MOD;
-    int temp = 0;
 
     if (pos > MEM_SIZE)
         pos = pos % MEM_SIZE - 1;
