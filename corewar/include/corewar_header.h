@@ -61,6 +61,8 @@
     void change_endians(void *data, size_t size);
     void destroy_vm(vm_t *vm);
     void destroy_champ(void *data);
+    short get_short_param(unsigned char *vm, int start);
+    int get_int_param(unsigned char *vm, int start);
 
     // DOC
 
