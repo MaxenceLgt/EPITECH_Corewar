@@ -7,8 +7,8 @@
 
 #include "corewar_header.h"
 
-int command_zjmp(int index, process_t *process, UNUSED vm_t *vm)
+int exec_zjmp(UNUSED vm_t *vm, UNUSED champ_t *champ,
+UNUSED process_t *process, UNUSED int *args)
 {
-    process->pos = process->pos + index;
     return 0;
 }

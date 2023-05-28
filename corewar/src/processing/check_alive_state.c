@@ -18,11 +18,13 @@ static void check_die_champs(ml_node *champ, vm_t *vm)
             ml_destroy_node(vm->champs_data, champ->prev, destroy_champ);
             vm->nb_champ -= 1;
             continue;
-        } if (!info->is_alive && !champ->next) {
+        }
+        if (!info->is_alive && !champ->next) {
             ml_destroy_node(vm->champs_data, champ, destroy_champ);
             vm->nb_champ -= 1;
             break;
         }
+        info->is_alive = false;
         champ = champ->next;
     }
 }

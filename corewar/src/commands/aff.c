@@ -7,8 +7,8 @@
 
 #include "corewar_header.h"
 
-int command_aff(int reg, UNUSED vm_t *vm, process_t *process, champ_t *champ)
+int exec_aff(UNUSED vm_t *vm, UNUSED champ_t *champ,
+UNUSED process_t *process, UNUSED int *args)
 {
-    process->reg[reg] = champ->champ_content[0];
     return 0;
 }

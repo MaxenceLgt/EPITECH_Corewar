@@ -7,9 +7,8 @@
 
 #include "corewar_header.h"
 
-int command_sub(int *reg, process_t *process, UNUSED vm_t *vm)
+int exec_sub(UNUSED vm_t *vm, UNUSED champ_t *champ,
+UNUSED process_t *process, UNUSED int *args)
 {
-    process->reg[reg[2]] = process->reg[reg[1]] - process->reg[reg[0]];
-    process->carry = 1;
     return 0;
 }
