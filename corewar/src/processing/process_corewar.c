@@ -11,8 +11,9 @@ static int check_vm_run(vm_t *vm)
 {
     if (vm->max_cycles != 0 && vm->current_cycle == vm->max_cycles)
         return 0;
-    if (vm->nb_champ <= 1)
+    if (vm->nb_champ <= 1) {
         return 0;
+    }
     return 1;
 }
 

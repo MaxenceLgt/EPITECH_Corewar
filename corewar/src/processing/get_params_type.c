@@ -53,9 +53,9 @@ unsigned char *vm)
     for (size_t i = 0; i < 3; i++)
         params[i] = -1;
     if (function == 1)
-        params[0] = T_DIR;
+        params[0] = DIR_SIZE;
     if (function == 9 || function == 12 || function == 15)
-        params[0] = T_IND;
+        params[0] = IND_SIZE;
     set_pc(params, process, function, vm);
     return (params);
 }
@@ -69,13 +69,16 @@ unsigned char *vm)
         return (NULL);
     for (size_t i = 0, parser = 0; parser < 3; i += 2, parser++) {
         if (test[i] == '1' && test[i + 1] == '1')
-            params[parser] = T_IND;
+            params[parser] = IND_SIZE;
         if (test[i] == '1' && test[i + 1] == '0')
-            params[parser] = T_DIR;
+            params[parser] = DIR_SIZE;
         if (test[i] == '0' && test[i + 1] == '1')
-            params[parser] = T_REG;
+            params[parser] = 1;
         if (test[i] == '0' && test[i + 1] == '0')
             params[parser] = -1;
+        if (((test[i] == '1' && test[i + 1] == '0') ||
+        (test[i] == '1' && test[i + 1] == '1')) && IS_INDEX(function))
+            params[parser] = IND_SIZE;
     }
     set_pc(params, process, function, vm);
     return (params);
