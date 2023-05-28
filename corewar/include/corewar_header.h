@@ -119,6 +119,7 @@
 
     int get_hexa(unsigned char buffer);
     int load_new_process(UNUSED vm_t *vm, champ_t *champ, int *params);
+    int set_ld_reg_values(vm_t *vm, process_t *process, int *params);
 
     // COMMAND STRUCT
 
