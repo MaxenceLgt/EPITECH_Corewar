@@ -11,6 +11,7 @@ SRC	=	src/doc/help.c									\
 		src/tools/change_endians.c						\
 		src/tools/destroy_vm.c							\
 		src/tools/traduction.c							\
+		src/tools/cmds_data.c							\
 		\
 		src/init/init_vm.c								\
 		src/init/parse_args.c							\
@@ -29,6 +30,8 @@ SRC	=	src/doc/help.c									\
 		src/processing/check_alive_state.c				\
 		src/processing/exec_prog.c						\
 		src/processing/get_params_type.c				\
+		src/processing/init_goal_cycle.c				\
+		src/processing/move_to_pc.c						\
 		\
 		src/commands/live.c								\
 		src/commands/ld.c								\

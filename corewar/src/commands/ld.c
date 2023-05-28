@@ -7,9 +7,8 @@
 
 #include "corewar_header.h"
 
-int command_ld(int reg, int arg, UNUSED vm_t *vm, process_t *process)
+int exec_ld(UNUSED vm_t *vm, UNUSED champ_t *champ, UNUSED process_t *process,
+UNUSED int *args)
 {
-    process->reg[reg] = arg;
-    process->carry = 1;
     return 0;
 }

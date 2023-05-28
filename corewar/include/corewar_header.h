@@ -49,6 +49,13 @@
         ml_list *champs_data;
     } vm_t;
 
+    typedef struct commands {
+        int id;
+        int cycles;
+        int nb_args;
+        int (*command)(vm_t *, champ_t *, process_t *, int *);
+    } cmd_t;
+
     // ROOT
 
     void change_endians(void *data, size_t size);
@@ -72,26 +79,26 @@
     size_t get_load(ml_list *champ_lst);
     bool only_one_load(ml_list *lst_champ);
     void sort_champion_lst(ml_list *champ_lst);
+    void load_process(champ_t *champ, size_t pos);
 
     // COMMANDS
 
-    int command_live(vm_t *vm, champ_t *champ);
-    int command_ld(int reg, int arg, UNUSED vm_t *vm, process_t *process);
-    int command_zjmp(int index, process_t *process, UNUSED vm_t *vm);
-    int command_lfork(UNUSED int arg, UNUSED vm_t *vm);
-    int command_lfork(UNUSED int arg, UNUSED vm_t *vm);
-    int command_aff(int reg, UNUSED vm_t *vm, process_t *process, \
-champ_t *champ);
-    int command_add(process_t *process, UNUSED vm_t *vm, int *reg);
-    int command_and(UNUSED int arg, process_t *process, UNUSED vm_t *vm);
-    int command_ldi(int *index, int reg, process_t *process, UNUSED vm_t *vm);
-    int command_lld(int arg, int reg, process_t *process, UNUSED vm_t *vm);
-    int command_lldi(UNUSED int arg, process_t *process, UNUSED vm_t *vm);
-    int command_or(UNUSED int arg, process_t *process, UNUSED vm_t *vm);
-    int command_st(int reg, int arg, process_t *process, UNUSED vm_t *vm);
-    int command_sti(int *index, int reg, process_t *process, UNUSED vm_t *vm);
-    int command_sub(int *reg, process_t *process, UNUSED vm_t *vm);
-    int command_xor(UNUSED int arg, process_t *process, UNUSED vm_t *vm);
+    int exec_live(vm_t *vm, champ_t *champ, process_t *process, int *args);
+    int exec_ld(vm_t *vm, champ_t *champ, process_t *process, int *args);
+    int exec_zjmp(vm_t *vm, champ_t *champ, process_t *process, int *args);
+    int exec_lfork(vm_t *vm, champ_t *champ, process_t *process, int *args);
+    int exec_fork(vm_t *vm, champ_t *champ, process_t *process, int *args);
+    int exec_aff(vm_t *vm, champ_t *champ, process_t *process, int *args);
+    int exec_add(vm_t *vm, champ_t *champ, process_t *process, int *args);
+    int exec_and(vm_t *vm, champ_t *champ, process_t *process, int *args);
+    int exec_ldi(vm_t *vm, champ_t *champ, process_t *process, int *args);
+    int exec_lld(vm_t *vm, champ_t *champ, process_t *process, int *args);
+    int exec_lldi(vm_t *vm, champ_t *champ, process_t *process, int *args);
+    int exec_or(vm_t *vm, champ_t *champ, process_t *process, int *args);
+    int exec_st(vm_t *vm, champ_t *champ, process_t *process, int *args);
+    int exec_sti(vm_t *vm, champ_t *champ, process_t *process, int *args);
+    int exec_sub(vm_t *vm, champ_t *champ, process_t *process, int *args);
+    int exec_xor(vm_t *vm, champ_t *champ, process_t *process, int *args);
 
     // COREWAR
 
@@ -100,8 +107,14 @@ champ_t *champ);
     int exec_prog(UNUSED vm_t *vm);
     void display_winner(vm_t *vm);
     int *get_params_type(process_t *process, unsigned char *vm);
+    void init_goal_cycle(vm_t *vm, ml_list *champ_lst);
+    void move_to_pc(vm_t *vm, process_t *process);
 
     // TOOLS
     int get_hexa(unsigned char buffer);
+
+    // COMMAND STRUCT
+
+    extern cmd_t cmds_data[];
 
 #endif /* !COREWAR_HEADER_ */
