@@ -12,6 +12,7 @@
 
     #include <stdbool.h>
     #include <sys/types.h>
+    #include <stdio.h>
     #include "ml_lib_head.h"
     #include "defines_header.h"
     #include "op.h"
@@ -63,6 +64,8 @@
     void destroy_champ(void *data);
     short get_short_param(unsigned char *vm, int start);
     int get_int_param(unsigned char *vm, int start);
+    void set_int_to_char(int num, vm_t *vm, int pos);
+    void set_short_to_char(short num, vm_t *vm, int pos);
 
     // DOC
 

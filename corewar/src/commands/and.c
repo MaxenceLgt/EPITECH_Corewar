@@ -30,8 +30,8 @@ int exec_and(vm_t *vm, UNUSED champ_t *champ, process_t *process, int *args)
         } if (args[i] == DIR_SIZE) {
             params[i] = get_int_param(vm->vm, start);
             start += 4;
-        } if (params[i] == IND_SIZE) {
-            temp = process->pc + get_short_param(vm->vm, start);
+        } if (args[i] == IND_SIZE) {
+            temp = process->pos + get_short_param(vm->vm, start) % IDX_MOD;
             params[i] = vm->vm[IS_OUT(temp)];
             start += 2;
         }
